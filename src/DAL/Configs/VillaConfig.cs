@@ -25,7 +25,14 @@ namespace DAL.Configs
                 .HasDefaultValue(true)
                 .IsRequired();
 
+            builder.Property(x => x.Electricity)
+                .HasColumnName("Electricity")
+                .HasDefaultValue(true)
+                .IsRequired();
 
+            builder.Property(x => x.ParkingCount)
+                .HasColumnName("ParkingCount")
+                .IsRequired();
         }
     }
 }
