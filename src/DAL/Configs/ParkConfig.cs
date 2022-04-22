@@ -10,14 +10,8 @@ namespace DAL.Configs
         {
             builder.ToTable("Park");
 
-
             builder.Property(x => x.Safety)
                 .HasColumnName("Safety")
-                .HasMaxLength(100)
-                .IsRequired();
-
-            builder.Property(x => x.WalkingPaths)
-                .HasColumnName("WalkingPaths")
                 .HasMaxLength(100)
                 .IsRequired();
         }
