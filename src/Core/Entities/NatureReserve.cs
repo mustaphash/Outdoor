@@ -2,9 +2,14 @@
 {
     public class NatureReserve : Outdoor
     {
-        public bool OpenForTourist { get; set; }
+        public NatureReserve()
+        {
+            Animal = new List<Animal>();
+            Extras = new List<Extras>();
+        }
         public double Size { get; set; }
 
         public ICollection<Animal> Animal { get; set; }
+        public ICollection<Extras> Extras { get; set; }
     }
 }

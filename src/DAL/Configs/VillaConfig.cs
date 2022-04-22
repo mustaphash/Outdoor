@@ -8,26 +8,12 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Villa> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.ToTable("Villa");
 
-            builder.Property(x => x.Id)
-                .HasColumnName("Id");
-
-            //base prop?
 
             builder.Property(x => x.RoomCount)
                 .HasColumnName("RoomCount")
                 .HasMaxLength(10)
-                .IsRequired();
-
-            builder.Property(x => x.WiFi)
-                .HasColumnName("Wi-Fi")
-                .HasDefaultValue(true)
-                .IsRequired();
-
-            builder.Property(x => x.Electricity)
-                .HasColumnName("Electricity")
-                .HasDefaultValue(true)
                 .IsRequired();
 
             builder.Property(x => x.ParkingCount)

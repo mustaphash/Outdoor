@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using DAL.Configs;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL
@@ -13,6 +14,7 @@ namespace DAL
         {
         }
         public DbSet<Outdoor> Outdoors { get; set; }
+        public DbSet<Extras> Extras { get; set; }
         public DbSet<Lake> Dams { get; set; }
         public DbSet<Fountain> Fountains { get; set; }
         public DbSet<Landmark> Landmarks { get; set; }
@@ -20,7 +22,6 @@ namespace DAL
         public DbSet<Park> Parks { get; set; }
         public DbSet<Villa> Villas { get; set; }
         public DbSet<Animal> Animals { get; set; }
-        public DbSet<LandmarkType> LandmarkTypes { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,6 +32,14 @@ namespace DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AnimalConfig());
+            modelBuilder.ApplyConfiguration(new FountainConfig());
+            modelBuilder.ApplyConfiguration(new LakeConfig());
+            modelBuilder.ApplyConfiguration(new LandmarkConfig());
+            modelBuilder.ApplyConfiguration(new NatureReserveConfig());
+            modelBuilder.ApplyConfiguration(new OutdoorConfig());
+            modelBuilder.ApplyConfiguration(new ParkConfig());
+            modelBuilder.ApplyConfiguration(new VillaConfig());
         }
     }
 }

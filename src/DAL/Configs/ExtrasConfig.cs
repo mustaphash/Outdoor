@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Configs
 {
-    public class LandmarkTypeConfig : IEntityTypeConfiguration<LandmarkType>
+    public class ExtrasConfig : IEntityTypeConfiguration<Extras>
     {
-        public void Configure(EntityTypeBuilder<LandmarkType> builder)
+        public void Configure(EntityTypeBuilder<Extras> builder)
         {
             builder.HasKey(x => x.Id);
 
@@ -15,11 +15,13 @@ namespace DAL.Configs
 
             builder.Property(x => x.Name)
                 .HasColumnName("Name")
-                .HasMaxLength(200)
+                .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(x => x.Height)
-                .HasColumnName("Height");
+            builder.Property(x => x.Description)
+                .HasColumnName("Description")
+                .HasMaxLength(500)
+                .IsRequired();
         }
     }
 }

@@ -2,9 +2,12 @@
 {
     public class Villa : Outdoor
     {
+        public Villa()
+        {
+            Extras = new List<Extras>();
+        }
         public int RoomCount { get; set; }
-        public bool WiFi { get; set; }
-        public bool Electricity { get; set; }
         public int ParkingCount { get; set; }
+        public ICollection<Extras> Extras { get; set; }
     }
 }

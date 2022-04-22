@@ -10,7 +10,6 @@ namespace DAL.Configs
         {
             builder.ToTable("Outdoor");
 
-            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
                 .HasColumnName("Id")
@@ -24,11 +23,6 @@ namespace DAL.Configs
             builder.Property(x => x.Description)
                 .HasColumnName("Description")
                 .HasMaxLength(1000);
-
-            builder.Property(x => x.CarPath)
-                .HasColumnName("CarPath")
-                .HasDefaultValue(true)
-                .IsRequired();
 
             builder.Property(x => x.Longitude)
                 .HasColumnName("Longitude")

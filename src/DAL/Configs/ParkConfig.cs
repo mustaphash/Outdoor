@@ -10,21 +10,10 @@ namespace DAL.Configs
         {
             builder.ToTable("Park");
 
-            builder.HasKey(x => x.Id);
-
-            builder.Property(x => x.Id)
-                .HasColumnName("Id");
-
-            //base prop?
 
             builder.Property(x => x.Safety)
                 .HasColumnName("Safety")
                 .HasMaxLength(100)
-                .IsRequired();
-
-            builder.Property(x => x.Camping)
-                .HasColumnName("Camping")
-                .HasDefaultValue(true)
                 .IsRequired();
 
             builder.Property(x => x.WalkingPaths)

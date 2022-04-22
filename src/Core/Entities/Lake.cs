@@ -2,9 +2,12 @@
 {
     public class Lake : Outdoor
     {
-        public bool FishingAllowed { get; set; }
-        public bool Camping { get; set; }
-
+        public Lake()
+        {
+            Animals = new List<Animal>();
+            Extras = new List<Extras>();
+        }
         public ICollection<Animal> Animals { get; set; }
+        public ICollection<Extras> Extras { get; set; }
     }
 }

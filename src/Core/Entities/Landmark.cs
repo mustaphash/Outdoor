@@ -2,6 +2,10 @@
 {
     public class Landmark : Outdoor
     {
-        public ICollection<LandmarkType> Type { get; set; }
+        public Landmark()
+        {
+            Extras = new List<Extras>();
+        }
+        public ICollection<Extras> Extras { get; set; }
     }
 }
