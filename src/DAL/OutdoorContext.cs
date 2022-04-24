@@ -41,13 +41,6 @@ namespace DAL
             modelBuilder.ApplyConfiguration(new ParkConfig());
             modelBuilder.ApplyConfiguration(new VillaConfig());
             modelBuilder.ApplyConfiguration(new ExtrasConfig());
-            modelBuilder.Entity<Extras>().HasData(
-                new Extras { Id = 1, Name = "Wi-Fi" },
-                new Extras { Id = 2, Name = "Camping" },
-                new Extras { Id = 3, Name = "FishingAllowed" },
-                new Extras { Id = 4, Name = "Elrctricity" },
-                new Extras { Id = 5, Name = "OpenForTourist" },
-                new Extras { Id = 6, Name = "WalkingPaths" });
         }
     }
 }
