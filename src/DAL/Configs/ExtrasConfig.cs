@@ -20,38 +20,38 @@ namespace DAL.Configs
 
             builder.Property(x => x.Description)
                 .HasColumnName("Description")
-                .HasMaxLength(500)
-                .IsRequired();
+                .HasMaxLength(500);
 
             builder.HasData(
-                new Extras 
+                new Extras
                 {
                     Id = 1,
-                    Name = "Wi-Fi" 
+                    Name = "Wi-Fi"
                 },
-                new Extras 
+                new Extras
                 {
                     Id = 2,
                     Name = "Camping"
                 },
-                new Extras 
-                { 
+                new Extras
+                {
                     Id = 3,
                     Name = "FishingAllowed"
                 },
-                new Extras { 
-                    Id = 4, 
-                    Name = "Elrctricity" 
+                new Extras
+                {
+                    Id = 4,
+                    Name = "Elrctricity"
                 },
-                new Extras 
+                new Extras
                 {
                     Id = 5,
-                    Name = "OpenForTourist" 
+                    Name = "OpenForTourist"
                 },
-                new Extras 
+                new Extras
                 {
                     Id = 6,
-                    Name = "WalkingPaths" 
+                    Name = "WalkingPaths"
                 });
         }
     }
