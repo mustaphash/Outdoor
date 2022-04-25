@@ -21,6 +21,7 @@ namespace DAL.Configs
             builder.Property(x => x.Description)
                 .HasColumnName("Description")
                 .HasMaxLength(500);
+                
 
             builder.HasData(
                 new Extras
