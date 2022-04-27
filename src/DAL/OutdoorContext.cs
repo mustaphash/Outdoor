@@ -6,26 +6,36 @@ namespace DAL
 {
     public class OutdoorContext : DbContext
     {
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 
         public OutdoorContext()
         {
         }
 
         public OutdoorContext(DbContextOptions options)
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 
             : base(options)
         {
         }
+
         public DbSet<Outdoor> Outdoors { get; set; }
+
         public DbSet<Extras> Extras { get; set; }
-        public DbSet<Lake> Dams { get; set; }
+
+        public DbSet<Lake> Lakes { get; set; }
+
         public DbSet<Fountain> Fountains { get; set; }
+
         public DbSet<Landmark> Landmarks { get; set; }
+
         public DbSet<NatureReserve> NatureReserves { get; set; }
+
         public DbSet<Park> Parks { get; set; }
+
         public DbSet<Villa> Villas { get; set; }
+
         public DbSet<Animal> Animals { get; set; }
 
+        public DbSet<WaterType> WaterTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -44,6 +54,7 @@ namespace DAL
             modelBuilder.ApplyConfiguration(new ParkConfig());
             modelBuilder.ApplyConfiguration(new VillaConfig());
             modelBuilder.ApplyConfiguration(new ExtrasConfig());
+            modelBuilder.ApplyConfiguration(new WaterTypeConfig());
         }
     }
 }

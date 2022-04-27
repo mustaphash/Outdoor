@@ -8,8 +8,7 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Outdoor> builder)
         {
-            builder.ToTable("Outdoor");
-
+            builder.ToTable("Outdoors");
 
             builder.Property(x => x.Id)
                 .HasColumnName("Id")

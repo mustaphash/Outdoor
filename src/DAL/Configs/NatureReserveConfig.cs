@@ -8,7 +8,7 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<NatureReserve> builder)
         {
-            builder.ToTable("NatureReserve");
+            builder.ToTable("NatureReserves");
 
             builder.Property(x => x.Size)
                 .HasColumnName("Size")

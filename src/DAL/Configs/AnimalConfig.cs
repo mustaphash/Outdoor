@@ -8,7 +8,7 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Animal> builder)
         {
-            builder.ToTable("Animal");
+            builder.ToTable("Animals");
 
             builder.HasKey(x => x.Id);
 
@@ -22,7 +22,7 @@ namespace DAL.Configs
 
             builder.Property(x => x.Description)
                 .HasColumnName("Description")
-                .HasMaxLength(500);
+                .HasMaxLength(1000);
 
             builder.HasData(
                 new Animal
@@ -176,13 +176,13 @@ namespace DAL.Configs
                 },
                 new Animal
                 {
-                    Id= 29,
+                    Id = 29,
                     Name = "Sparrow"
                 },
                 new Animal
                 {
                     Id = 30,
-                    Name ="Owl"
+                    Name = "Owl"
                 }
                 );
         }

@@ -8,12 +8,16 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Villa> builder)
         {
-            builder.ToTable("Villa");
-
+            builder.ToTable("Villas");
 
             builder.Property(x => x.RoomCount)
                 .HasColumnName("RoomCount")
-                .HasMaxLength(10)
+                .HasMaxLength(1000)
+                .IsRequired();
+
+            builder.Property(x => x.GuestCount)
+                .HasColumnName("GuestCount")
+                .HasMaxLength(1000)
                 .IsRequired();
 
             builder.Property(x => x.ParkingCount)

@@ -10,6 +10,7 @@
         public double Size { get; set; }
 
         public ICollection<Animal> Animal { get; set; }
+
         public ICollection<Extras> Extras { get; set; }
     }
 }

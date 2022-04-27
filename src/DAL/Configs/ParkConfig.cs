@@ -8,11 +8,11 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Park> builder)
         {
-            builder.ToTable("Park");
+            builder.ToTable("Parks");
 
             builder.Property(x => x.Safety)
                 .HasColumnName("Safety")
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsRequired();
         }
     }

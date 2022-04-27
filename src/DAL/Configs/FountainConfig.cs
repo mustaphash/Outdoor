@@ -8,12 +8,7 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Fountain> builder)
         {
-            builder.ToTable("Fountain");
-
-            builder.Property(x => x.WaterType)
-                .HasColumnName("WaterType")
-                .HasMaxLength(50)
-                .IsRequired();
+            builder.ToTable("Fountains");
 
             builder.Property(x => x.InMemoryOf)
                 .HasColumnName("InMemoryOf")

@@ -8,6 +8,8 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Extras> builder)
         {
+            builder.ToTable("Extras");
+
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
@@ -15,13 +17,12 @@ namespace DAL.Configs
 
             builder.Property(x => x.Name)
                 .HasColumnName("Name")
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsRequired();
 
             builder.Property(x => x.Description)
                 .HasColumnName("Description")
-                .HasMaxLength(500);
-                
+                .HasMaxLength(1000);
 
             builder.HasData(
                 new Extras

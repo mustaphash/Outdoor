@@ -8,8 +8,7 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Lake> builder)
         {
-            builder.ToTable("Lake");
-
+            builder.ToTable("Lakes");
         }
     }
 }

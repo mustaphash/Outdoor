@@ -8,8 +8,7 @@ namespace DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Landmark> builder)
         {
-            builder.ToTable("Landmark");
-
+            builder.ToTable("Landmarks");
         }
     }
 }
