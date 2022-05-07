@@ -8,15 +8,21 @@ namespace DAL
 
         private readonly IAnimalRepository _animalRepository;
 
+        private readonly IExtrasRepository _extrasRepository;
+
         public UnitOfWork(
             OutdoorContext context,
-            IAnimalRepository animalRepository)
+            IAnimalRepository animalRepository,
+            IExtrasRepository extrasRepository)
         {
             _context = context;
             _animalRepository = animalRepository;
+            _extrasRepository = extrasRepository;
         }
 
         public IAnimalRepository Animals => _animalRepository;
+
+        public IExtrasRepository Extras => _extrasRepository;
 
         public async Task<int> CompleteAsync()
         {

@@ -20,5 +20,13 @@ namespace Infrastructure.Services
 
             return animalsModel;
         }
+
+        public async Task<IList<ExtrasModel>> GetAllExtras()
+        {
+            var extras = await _unitOfWork.Extras.GetAll();
+            var extrasModel = extras.Select(e => new ExtrasModel(e)).ToList();
+
+            return extrasModel;
+        }
     }
 }

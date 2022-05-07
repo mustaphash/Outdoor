@@ -5,5 +5,7 @@ namespace Infrastructure.Services.Abstract
     public interface INomenclatureService
     {
         Task<IList<AnimalModel>> GetAllAnimals();
+
+        Task<IList<ExtrasModel>> GetAllExtras();
     }
 }

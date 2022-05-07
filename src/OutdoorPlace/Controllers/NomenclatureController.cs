@@ -25,5 +25,16 @@ namespace OutdoorPlace.Controllers
 
             return Ok(animals);
         }
+
+        [HttpGet("extras")]
+        [ProducesResponseType(typeof(IList<ExtrasModel>), 200)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAllExtras()
+        {
+            var extras = await _nomenclatureService.GetAllExtras();
+
+            return Ok(extras);
+        }
     }
 }

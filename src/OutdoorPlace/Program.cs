@@ -17,6 +17,7 @@ builder.Services.AddDbContext<OutdoorContext>(x => x.UseSqlServer(builder.Config
 builder.Services.AddScoped<INomenclatureService, NomenclatureService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
+builder.Services.AddScoped<IExtrasRepository, ExtrasRepository>();
 
 var app = builder.Build();
 

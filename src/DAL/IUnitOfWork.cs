@@ -6,6 +6,8 @@ namespace DAL
     {
         IAnimalRepository Animals { get; }
 
+        IExtrasRepository Extras { get; }
+
         Task<int> CompleteAsync();
     }
 }
