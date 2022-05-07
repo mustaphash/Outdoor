@@ -1,6 +1,5 @@
 ﻿using Core.Entities;
 using DAL.Repositories.Abstract;
-using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {

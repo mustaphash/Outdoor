@@ -17,8 +17,8 @@ namespace OutdoorPlace.Controllers
 
         [HttpGet("animals")]
         [ProducesResponseType(typeof(IList<AnimalModel>), 200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllAnimals()
         {
             var animals = await _nomenclatureService.GetAllAnimals();

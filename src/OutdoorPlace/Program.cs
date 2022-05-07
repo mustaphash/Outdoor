@@ -1,5 +1,7 @@
 using DAL;
+using DAL.Repositories;
 using DAL.Repositories.Abstract;
+using Infrastructure.Services;
 using Infrastructure.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddDbContext<OutdoorContext>(x=>x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionStrings"))
-builder.Services.AddScoped<INomenclatureService, INomenclatureService>();
-builder.Services.AddScoped<IAnimalRepository, IAnimalRepository>();
+builder.Services.AddDbContext<OutdoorContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionStrings")));
+builder.Services.AddScoped<INomenclatureService, NomenclatureService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 
 var app = builder.Build();
 
