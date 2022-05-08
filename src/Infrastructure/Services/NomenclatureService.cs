@@ -28,5 +28,13 @@ namespace Infrastructure.Services
 
             return extrasModel;
         }
+
+        public async Task<IList<WaterTypeModel>> GetAllWaterTypes()
+        {
+            var waterTypes = await _unitOfWork.WaterTypes.GetAll();
+            var waterTypesModel = waterTypes.Select(e => new WaterTypeModel(e)).ToList();
+
+            return waterTypesModel;
+        }
     }
 }

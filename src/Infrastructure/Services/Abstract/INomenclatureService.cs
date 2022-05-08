@@ -7,5 +7,7 @@ namespace Infrastructure.Services.Abstract
         Task<IList<AnimalModel>> GetAllAnimals();
 
         Task<IList<ExtrasModel>> GetAllExtras();
+
+        Task<IList<WaterTypeModel>> GetAllWaterTypes();
     }
 }

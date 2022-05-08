@@ -8,6 +8,8 @@ namespace DAL
 
         IExtrasRepository Extras { get; }
 
+        IWaterTypeRepository WaterTypes { get; }
+
         Task<int> CompleteAsync();
     }
 }

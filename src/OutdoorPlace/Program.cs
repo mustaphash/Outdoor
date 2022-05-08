@@ -18,6 +18,7 @@ builder.Services.AddScoped<INomenclatureService, NomenclatureService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IExtrasRepository, ExtrasRepository>();
+builder.Services.AddScoped<IWaterTypeRepository, WaterTypeRepository>();
 
 var app = builder.Build();
 

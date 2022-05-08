@@ -36,5 +36,16 @@ namespace OutdoorPlace.Controllers
 
             return Ok(extras);
         }
+
+        [HttpGet("waterTypes")]
+        [ProducesResponseType(typeof(IList<WaterTypeModel>), 200)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAllWaterTypes()
+        {
+            var waterTypes = await _nomenclatureService.GetAllWaterTypes();
+
+            return Ok(waterTypes);
+        }
     }
 }
