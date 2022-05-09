@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Infrastructure.Models;
 using Infrastructure.Services.Abstract;
 
 namespace Infrastructure.Services
@@ -10,6 +11,14 @@ namespace Infrastructure.Services
         public PlaceService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        public async Task<List<OutdoorModel>> GetAllOutdoors()
+        {
+            var outdoors = await _unitOfWork.Outdoors.GetAll();
+            var outdoorsModel = outdoors.Select(o => new OutdoorModel(o)).ToList();
+
+            return outdoorsModel;
         }
     }
 }

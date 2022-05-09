@@ -12,16 +12,20 @@ namespace DAL
 
         private readonly IWaterTypeRepository _waterTypeRepository;
 
+        private readonly IOutdoorRepository _outdoorRepository;
+
         public UnitOfWork(
             OutdoorContext context,
             IAnimalRepository animalRepository,
             IExtrasRepository extrasRepository,
-            IWaterTypeRepository waterTypeRepository)
+            IWaterTypeRepository waterTypeRepository,
+            IOutdoorRepository outdoorRepository)
         {
             _context = context;
             _animalRepository = animalRepository;
             _extrasRepository = extrasRepository;
             _waterTypeRepository = waterTypeRepository;
+            _outdoorRepository = outdoorRepository;
         }
 
         public IAnimalRepository Animals => _animalRepository;
@@ -29,6 +33,8 @@ namespace DAL
         public IExtrasRepository Extras => _extrasRepository;
 
         public IWaterTypeRepository WaterTypes => _waterTypeRepository;
+
+        public IOutdoorRepository Outdoors => _outdoorRepository;
 
         public async Task<int> CompleteAsync()
         {

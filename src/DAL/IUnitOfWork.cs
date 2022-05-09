@@ -10,6 +10,8 @@ namespace DAL
 
         IWaterTypeRepository WaterTypes { get; }
 
+        IOutdoorRepository Outdoors { get; }
+
         Task<int> CompleteAsync();
     }
 }

@@ -15,10 +15,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<OutdoorContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionStrings")));
 builder.Services.AddScoped<INomenclatureService, NomenclatureService>();
+builder.Services.AddScoped<IPlaceService, PlaceService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IExtrasRepository, ExtrasRepository>();
 builder.Services.AddScoped<IWaterTypeRepository, WaterTypeRepository>();
+builder.Services.AddScoped<IOutdoorRepository, OutdoorRepository>();
 
 var app = builder.Build();
 

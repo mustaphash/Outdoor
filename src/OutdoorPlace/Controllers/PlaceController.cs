@@ -13,5 +13,13 @@ namespace OutdoorPlace.Controllers
         {
             _placeService = placeService_;
         }
+
+        [HttpGet("outdoors")]
+        public async Task<IActionResult> GetAllOutdoors()
+        {
+            var outdoors = await _placeService.GetAllOutdoors();
+
+            return Ok(outdoors);
+        }
     }
 }
