@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using Core.Entities;
+using DAL;
 using Infrastructure.Models;
 using Infrastructure.Services.Abstract;
 
@@ -11,6 +12,14 @@ namespace Infrastructure.Services
         public PlaceService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        public async Task<CreateOutdoorModel> CreateOutdoor(CreateOutdoorModel model)
+        {
+            var outdoors = model.ToOutdoor();
+            await _unitOfWork.Outdoors.Add(outdoors);
+            
+            return model;
         }
 
         public async Task<List<OutdoorModel>> GetAllOutdoors()

@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.Abstract;
+﻿using Infrastructure.Models;
+using Infrastructure.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace OutdoorPlace.Controllers
@@ -18,6 +19,15 @@ namespace OutdoorPlace.Controllers
         public async Task<IActionResult> GetAllOutdoors()
         {
             var outdoors = await _placeService.GetAllOutdoors();
+
+            return Ok(outdoors);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CrateOutdoors([FromForm]CreateOutdoorModel model)
+        {
+            var outdoor = model.ToOutdoor();
+            var outdoors = await _placeService.CreateOutdoor(model);
 
             return Ok(outdoors);
         }
