@@ -9,7 +9,7 @@ namespace Infrastructure.Models
         {
             Name = string.Empty;
             Description = string.Empty;
-            Image = Array.Empty<byte>();
+            Image = new List<IFormFile>();
         }
         public string Name { get; set; }
 
@@ -17,7 +17,7 @@ namespace Infrastructure.Models
 
         public int Year { get; set; }
 
-        public byte[] Image { get; set; }
+        public IList<IFormFile> Image { get; set; }
 
         public double Longitude { get; set; }
 
@@ -27,16 +27,17 @@ namespace Infrastructure.Models
 
         public Outdoor ToOutdoor()
         {
-            return new Outdoor
-            {
-                Name = Name,
-                Description = Description,
-                Year = Year,
-                Image = Image,
-                Longitude = Longitude,
-                Latitude = Latitude,
-                WorkingHours = WorkingHours,
-            };
+                return new Outdoor
+                {
+
+                    Name = Name,
+                    Description = Description,
+                    Year = Year,
+                    Longitude = Longitude,
+                    Latitude = Latitude,
+                    WorkingHours = WorkingHours,
+                };
+            
         }
     }
 }
