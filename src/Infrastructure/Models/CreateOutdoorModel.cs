@@ -5,19 +5,24 @@ namespace Infrastructure.Models
 {
     public class CreateOutdoorModel
     {
+#pragma warning disable CS8625
+#pragma warning disable CS8618 
         public CreateOutdoorModel()
         {
             Name = string.Empty;
             Description = string.Empty;
-            Image = new List<IFormFile>();
+            Image = null;
+#pragma warning restore CS8618
+#pragma warning restore CS8625
         }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public int Year { get; set; }
 
-        public IList<IFormFile> Image { get; set; }
+        public IFormFile Image { get; set; }
 
         public double Longitude { get; set; }
 
@@ -27,18 +32,30 @@ namespace Infrastructure.Models
 
         public Outdoor ToOutdoor()
         {
-                return new Outdoor
-                {
+            byte[] fileBytes = new byte[] { };
 
-                    Name = Name,
-                    Description = Description,
-                    Year = Year,
-                    Longitude = Longitude,
-                    Latitude = Latitude,
-                    WorkingHours = WorkingHours,
-                    CreateDate = DateTime.Now,
-                };
-            
+            if (Image.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    Image.CopyTo(ms);
+                    fileBytes = ms.ToArray();
+                }
+            }
+
+            return new Outdoor
+            {
+
+                Name = Name,
+                Description = Description,
+                Year = Year,
+                Image = fileBytes,
+                Longitude = Longitude,
+                Latitude = Latitude,
+                WorkingHours = WorkingHours,
+                CreateDate = DateTime.Now,
+            };
+
         }
     }
 }

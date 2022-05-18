@@ -18,7 +18,8 @@ namespace Infrastructure.Services
         {
             var outdoors = model.ToOutdoor();
             await _unitOfWork.Outdoors.Add(outdoors);
-            
+            await _unitOfWork.CompleteAsync();
+
             return model;
         }
 
