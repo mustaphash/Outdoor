@@ -36,6 +36,7 @@ namespace Infrastructure.Models
                     Longitude = Longitude,
                     Latitude = Latitude,
                     WorkingHours = WorkingHours,
+                    CreateDate = DateTime.Now,
                 };
             
         }

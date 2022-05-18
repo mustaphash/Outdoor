@@ -22,7 +22,7 @@ namespace Infrastructure.Services
             return model;
         }
 
-        public async Task<List<OutdoorModel>> GetAllOutdoors()
+        public async Task<IList<OutdoorModel>> GetAllOutdoors()
         {
             var outdoors = await _unitOfWork.Outdoors.GetAll();
             var outdoorsModel = outdoors.Select(o => new OutdoorModel(o)).ToList();

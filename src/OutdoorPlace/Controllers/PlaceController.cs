@@ -16,6 +16,7 @@ namespace OutdoorPlace.Controllers
         }
 
         [HttpGet("outdoors")]
+        [ProducesResponseType(typeof(IList<OutdoorModel>), 200)]
         public async Task<IActionResult> GetAllOutdoors()
         {
             var outdoors = await _placeService.GetAllOutdoors();
@@ -26,10 +27,9 @@ namespace OutdoorPlace.Controllers
         [HttpPost]
         public async Task<IActionResult> CrateOutdoors([FromForm]CreateOutdoorModel model)
         {
-            var outdoor = model.ToOutdoor();
             var outdoors = await _placeService.CreateOutdoor(model);
 
-            return Ok(outdoors);
+            return NoContent();
         }
     }
 }

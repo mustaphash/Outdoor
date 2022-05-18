@@ -33,6 +33,7 @@ namespace Infrastructure.Models
             Longitude = outdoor.Longitude;
             Latitude = outdoor.Latitude;
             WorkingHours = outdoor.WorkingHours;
+            CreateDate = outdoor.CreateDate;
         }
 
         public int Id { get; set; }
@@ -54,5 +55,20 @@ namespace Infrastructure.Models
 
         public DateTime CreateDate { get; set; }
 
+        public Outdoor ToOutdoor()
+        {
+            return new Outdoor
+            {
+                Id = Id,
+                Name = Name,
+                Description = Description,
+                Year = Year,
+                Longitude = Longitude,
+                Latitude = Latitude,
+                WorkingHours = WorkingHours,
+                CreateDate = DateTime.Now,
+            };
+
+        }
     }
 }
