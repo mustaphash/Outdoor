@@ -18,19 +18,6 @@ namespace Infrastructure.Models
             Description = outdoor.Description;
             Year = outdoor.Year;
             Image = null;
-         //foreach (var file in Image)
-         //{
-         //    if (file.Length > 0)
-         //    {
-         //        using (var ms = new MemoryStream())
-         //        {
-         //            file.CopyTo(ms);
-         //            var fileBytes = ms.ToArray();
-         //            string s = Convert.ToBase64String(fileBytes);
-         //            // act on the Base64 data
-         //        }
-         //    }
-         //}
             Longitude = outdoor.Longitude;
             Latitude = outdoor.Latitude;
             WorkingHours = outdoor.WorkingHours;

@@ -12,6 +12,8 @@ namespace DAL
 
         IOutdoorRepository Outdoors { get; }
 
+        ILakeRepositry Lakes { get; }
+
         Task<int> CompleteAsync();
     }
 }

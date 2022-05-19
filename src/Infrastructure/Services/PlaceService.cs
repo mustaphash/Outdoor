@@ -30,5 +30,13 @@ namespace Infrastructure.Services
 
             return outdoorsModel;
         }
+
+        public async Task<IList<LakeModel>> GetAllLakes()
+        {
+            var lakes = await _unitOfWork.Lakes.GetAll();
+            var lakesModel = lakes.Select(l => new LakeModel(l)).ToList();
+
+            return lakesModel;
+        }
     }
 }

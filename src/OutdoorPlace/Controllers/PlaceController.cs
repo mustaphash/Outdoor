@@ -31,5 +31,13 @@ namespace OutdoorPlace.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("lakes")]
+        public async Task<IActionResult> GetAllLakes()
+        {
+            var lakes = await _placeService.GetAllLakes();
+
+            return Ok(lakes);
+        }
     }
 }

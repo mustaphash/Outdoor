@@ -19,6 +19,7 @@ builder.Services.AddScoped<IPlaceService, PlaceService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IExtrasRepository, ExtrasRepository>();
+builder.Services.AddScoped<ILakeRepositry, LakeRepository>();
 builder.Services.AddScoped<IWaterTypeRepository, WaterTypeRepository>();
 builder.Services.AddScoped<IOutdoorRepository, OutdoorRepository>();
 
