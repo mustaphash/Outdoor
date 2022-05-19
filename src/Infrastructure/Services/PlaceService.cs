@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using DAL;
 using Infrastructure.Models;
+using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
 
 namespace Infrastructure.Services
@@ -37,6 +38,15 @@ namespace Infrastructure.Services
             var lakesModel = lakes.Select(l => new LakeModel(l)).ToList();
 
             return lakesModel;
+        }
+
+        public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
+        {
+            var lakes = model.ToLake();
+            await _unitOfWork.Lakes.Add(lakes);
+            await _unitOfWork.CompleteAsync();
+
+            return model;
         }
     }
 }

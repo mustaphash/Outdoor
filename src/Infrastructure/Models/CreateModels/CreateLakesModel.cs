@@ -1,34 +1,20 @@
 ﻿using Core.Entities;
 using Microsoft.AspNetCore.Http;
 
-namespace Infrastructure.Models
+namespace Infrastructure.Models.CreateModels
 {
-    public class OutdoorModel
+    public class CreateLakesModel
     {
-        public OutdoorModel()
-        {
-            Name = String.Empty;
-            Description = String.Empty;
-            Image = new List<IFormFile>();
-        }
 #pragma warning disable CS8618
 #pragma warning disable CS8625
-        public OutdoorModel(Outdoor outdoor)
+        public CreateLakesModel()
         {
-            Id = outdoor.Id;
-            Name = outdoor.Name;
-            Description = outdoor.Description;
-            Year = outdoor.Year;
+            Name = string.Empty;
+            Description = string.Empty;
             Image = null;
-            Longitude = outdoor.Longitude;
-            Latitude = outdoor.Latitude;
-            WorkingHours = outdoor.WorkingHours;
-            CreateDate = outdoor.CreateDate;
         }
 #pragma warning restore CS8625
 #pragma warning restore CS8618
-
-        public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -36,7 +22,7 @@ namespace Infrastructure.Models
 
         public int Year { get; set; }
 
-        public IList<IFormFile> Image { get; set; }
+        public IFormFile Image { get; set; }
 
         public double Longitude { get; set; }
 
@@ -46,20 +32,29 @@ namespace Infrastructure.Models
 
         public DateTime CreateDate { get; set; }
 
-        public Outdoor ToOutdoor()
+        public Lake ToLake()
         {
-            return new Outdoor
+            byte[] fileBytes = new byte[] { };
+
+            if (Image.Length > 0)
             {
-                Id = Id,
+                using (var ms = new MemoryStream())
+                {
+                    Image.CopyTo(ms);
+                    fileBytes = ms.ToArray();
+                }
+            }
+            return new Lake
+            {
                 Name = Name,
                 Description = Description,
                 Year = Year,
+                Image = fileBytes,
                 Longitude = Longitude,
                 Latitude = Latitude,
                 WorkingHours = WorkingHours,
                 CreateDate = DateTime.Now,
             };
-
         }
     }
 }

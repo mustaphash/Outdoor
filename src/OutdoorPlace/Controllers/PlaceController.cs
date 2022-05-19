@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Models;
+using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,12 +25,12 @@ namespace OutdoorPlace.Controllers
             return Ok(outdoors);
         }
 
-        [HttpPost]
+        [HttpPost("outdoor")]
         public async Task<IActionResult> CrateOutdoors([FromForm]CreateOutdoorModel model)
         {
-            var outdoors = await _placeService.CreateOutdoor(model);
+             await _placeService.CreateOutdoor(model);
 
-            return NoContent();
+            return Ok(model);
         }
 
         [HttpGet("lakes")]
@@ -38,6 +39,14 @@ namespace OutdoorPlace.Controllers
             var lakes = await _placeService.GetAllLakes();
 
             return Ok(lakes);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateLakes([FromForm]CreateLakesModel model)
+        {
+            await _placeService.CreateLakes(model);
+
+            return Ok(model);
         }
     }
 }

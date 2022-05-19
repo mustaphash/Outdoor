@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Models;
+using Infrastructure.Models.CreateModels;
 
 namespace Infrastructure.Services.Abstract
 {
@@ -9,5 +10,7 @@ namespace Infrastructure.Services.Abstract
         Task<CreateOutdoorModel> CreateOutdoor(CreateOutdoorModel model);
 
         Task<IList<LakeModel>> GetAllLakes();
+
+        Task<CreateLakesModel> CreateLakes(CreateLakesModel model);
     }
 }
