@@ -4,6 +4,8 @@ namespace Infrastructure.Models
 {
     public class AnimalModel
     {
+        private AnimalModel a;
+
         public AnimalModel()
         {
             Name = string.Empty;
@@ -15,6 +17,11 @@ namespace Infrastructure.Models
             Id = animal.Id;
             Name = animal.Name;
             Description = animal.Description;
+        }
+
+        public AnimalModel(AnimalModel a)
+        {
+            this.a = a;
         }
 
         public int Id { get; set; }
