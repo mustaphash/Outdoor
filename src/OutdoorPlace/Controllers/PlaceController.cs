@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace OutdoorPlace.Controllers
@@ -40,7 +41,6 @@ namespace OutdoorPlace.Controllers
 
             return Ok(lakes);
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateLakes([FromForm]CreateLakesModel model)
         {

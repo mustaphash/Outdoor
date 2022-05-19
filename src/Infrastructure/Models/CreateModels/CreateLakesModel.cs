@@ -32,6 +32,8 @@ namespace Infrastructure.Models.CreateModels
 
         public DateTime CreateDate { get; set; }
 
+        public IEnumerable<AnimalModel> Animals { get; set; }
+
         public Lake ToLake()
         {
             byte[] fileBytes = new byte[] { };
@@ -55,6 +57,7 @@ namespace Infrastructure.Models.CreateModels
                 WorkingHours = WorkingHours,
                 CreateDate = DateTime.Now,
             };
+
         }
     }
 }
