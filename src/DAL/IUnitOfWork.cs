@@ -14,6 +14,16 @@ namespace DAL
 
         ILakeRepositry Lakes { get; }
 
+        IFountainRepository Fountains { get; }
+
+        ILandmarkRepository Landmarks { get; }
+
+        INatureReserveRepository NatureReserves { get; }
+
+        IParkRepository Parks { get; }
+
+        IVillaRepository Villas { get; }
+
         Task<int> CompleteAsync();
     }
 }

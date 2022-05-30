@@ -16,13 +16,28 @@ namespace DAL
 
         private readonly ILakeRepositry _lakeRepository;
 
+        private readonly IFountainRepository _fountainRepository;
+
+        private readonly ILandmarkRepository _landmarkRepository;
+
+        private readonly INatureReserveRepository _natureReserveRepository;
+
+        private readonly IParkRepository _parkRepository;
+
+        private readonly IVillaRepository _villaRepository;
+
         public UnitOfWork(
             OutdoorContext context,
             IAnimalRepository animalRepository,
             IExtrasRepository extrasRepository,
             IWaterTypeRepository waterTypeRepository,
             IOutdoorRepository outdoorRepository,
-            ILakeRepositry lakeRepository)
+            ILakeRepositry lakeRepository,
+            IFountainRepository fountainRepository,
+            ILandmarkRepository landmarkRepository,
+            INatureReserveRepository natureReserveRepository,
+            IParkRepository parkRepository,
+            IVillaRepository villaRepository)
         {
             _context = context;
             _animalRepository = animalRepository;
@@ -30,6 +45,11 @@ namespace DAL
             _waterTypeRepository = waterTypeRepository;
             _outdoorRepository = outdoorRepository;
             _lakeRepository = lakeRepository;
+            _fountainRepository = fountainRepository;
+            _landmarkRepository = landmarkRepository;
+            _natureReserveRepository = natureReserveRepository;
+            _parkRepository = parkRepository;
+            _villaRepository = villaRepository;
         }
 
         public IAnimalRepository Animals => _animalRepository;
@@ -41,6 +61,16 @@ namespace DAL
         public IOutdoorRepository Outdoors => _outdoorRepository;
 
         public ILakeRepositry Lakes => _lakeRepository;
+
+        public IFountainRepository Fountains => _fountainRepository;
+
+        public ILandmarkRepository Landmarks => _landmarkRepository;
+
+        public INatureReserveRepository NatureReserves => _natureReserveRepository;
+
+        public IParkRepository Parks => _parkRepository;
+
+        public IVillaRepository Villas => _villaRepository;
 
         public async Task<int> CompleteAsync()
         {
