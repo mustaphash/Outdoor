@@ -50,7 +50,10 @@ namespace Infrastructure.Services
 
         public async Task<IList<ParkModel>> GetAllPark()
         {
-            var parks = await _unitOfWork
+            var parks = await _unitOfWork.Parks.GetAll();
+            var parksModel = parks.Select(p => new ParkModel(p)).ToList();
+
+            return parksModel;
         }
     }
 }

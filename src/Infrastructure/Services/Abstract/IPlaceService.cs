@@ -14,5 +14,6 @@ namespace Infrastructure.Services.Abstract
         Task<CreateLakesModel> CreateLakes(CreateLakesModel model);
 
         Task<IList<ParkModel>> GetAllPark();
+
     }
 }

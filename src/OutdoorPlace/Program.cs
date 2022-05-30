@@ -20,6 +20,11 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IExtrasRepository, ExtrasRepository>();
 builder.Services.AddScoped<ILakeRepositry, LakeRepository>();
+builder.Services.AddScoped<IFountainRepository, FountainRepository>();
+builder.Services.AddScoped<ILandmarkRepository, LandmarkRepository > ();
+builder.Services.AddScoped<INatureReserveRepository, NatureReserveRepository>();
+builder.Services.AddScoped<IParkRepository, ParkRepository>();
+builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 builder.Services.AddScoped<IWaterTypeRepository, WaterTypeRepository>();
 builder.Services.AddScoped<IOutdoorRepository, OutdoorRepository>();
 

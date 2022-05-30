@@ -48,5 +48,13 @@ namespace OutdoorPlace.Controllers
 
             return Ok(model);
         }
+
+        [HttpGet("parks")]
+        public async Task<IActionResult> GetAllParks()
+        {
+            var parks = await _placeService.GetAllPark();
+
+            return Ok(parks);
+        }
     }
 }
