@@ -3,24 +3,24 @@ using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Models
 {
-    public class LakeModel
+    public class ParkModel
     {
-
 #pragma warning disable CS8625
-#pragma warning disable CS8618 
-        public LakeModel(Lake lake)
+#pragma warning disable CS8618
+        public ParkModel(Park park)
         {
-            Id = lake.Id;
-            Name = lake.Name;
-            Description = lake.Description;
-            Year = lake.Year;
+            Id = park.Id;
+            Name = park.Name;
+            Description = park.Description;
+            Year = park.Year;
             Image = null;
-            Longitude = lake.Longitude;
-            Latitude = lake.Latitude;
-            WorkingHours = lake.WorkingHours;
-            CreateDate = lake.CreateDate;
-            Animals = lake.Animals.Select(a => new AnimalModel(a));
-            Extras = lake.Extras.Select(e => new ExtrasModel(e));
+            Longitude = park.Longitude;
+            Latitude = park.Latitude;
+            WorkingHours = park.WorkingHours;
+            CreateDate = park.CreateDate;
+            Safety = park.Safety;
+            Animals = park.Animals.Select(a => new AnimalModel(a));
+            Extras = park.Extras.Select(e => new ExtrasModel(e));
         }
 #pragma warning restore CS8618
 #pragma warning restore CS8625
@@ -42,9 +42,11 @@ namespace Infrastructure.Models
         public int WorkingHours { get; set; }
 
         public DateTime CreateDate { get; set; }
+        public string Safety { get; set; }
 
         public IEnumerable<AnimalModel> Animals { get; set; }
 
         public IEnumerable<ExtrasModel> Extras { get; set; }
     }
 }
+

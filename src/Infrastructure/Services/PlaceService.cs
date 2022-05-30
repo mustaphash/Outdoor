@@ -47,5 +47,10 @@ namespace Infrastructure.Services
 
             return model;
         }
+
+        public async Task<IList<ParkModel>> GetAllPark()
+        {
+            var parks = await _unitOfWork
+        }
     }
 }
