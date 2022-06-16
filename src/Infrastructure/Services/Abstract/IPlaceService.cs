@@ -15,5 +15,12 @@ namespace Infrastructure.Services.Abstract
 
         Task<IList<ParkModel>> GetAllPark();
 
+        Task<IList<FountainModel>> GetAllFountain();
+
+        Task<IList<LandmarkModel>> GetAllLandmarks();
+
+        Task<IList<NatureReserveModel>> GetAllNatureReserves();
+
+        Task<IList<VillaModel>> GetAllVilla();
     }
 }

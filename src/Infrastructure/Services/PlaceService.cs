@@ -14,6 +14,7 @@ namespace Infrastructure.Services
             _unitOfWork = unitOfWork;
         }
 
+        //Outdoor
         public async Task<CreateOutdoorModel> CreateOutdoor(CreateOutdoorModel model)
         {
             var outdoors = model.ToOutdoor();
@@ -31,6 +32,7 @@ namespace Infrastructure.Services
             return outdoorsModel;
         }
 
+        //Lake
         public async Task<IList<LakeModel>> GetAllLakes()
         {
             var lakes = await _unitOfWork.Lakes.GetAll();
@@ -48,12 +50,49 @@ namespace Infrastructure.Services
             return model;
         }
 
+        //Park
         public async Task<IList<ParkModel>> GetAllPark()
         {
             var parks = await _unitOfWork.Parks.GetAll();
             var parksModel = parks.Select(p => new ParkModel(p)).ToList();
 
             return parksModel;
+        }
+
+        //Fountain
+        public async Task<IList<FountainModel>> GetAllFountain()
+        {
+            var fountains = await _unitOfWork.Fountains.GetAll();
+            var fountainModel = fountains.Select(f=>new FountainModel(f)).ToList();
+
+            return fountainModel;
+        }
+
+        //Landmark
+        public async Task<IList<LandmarkModel>> GetAllLandmarks()
+        {
+            var landmarks = await _unitOfWork.Landmarks.GetAll();
+            var landmarkModel = landmarks.Select(l => new LandmarkModel(l)).ToList();
+
+            return landmarkModel;
+        }
+
+        //NatureReserve
+        public async Task<IList<NatureReserveModel>> GetAllNatureReserves()
+        {
+            var natureReserves = await _unitOfWork.NatureReserves.GetAll();
+            var natureReserveModel = natureReserves.Select(n=> new NatureReserveModel(n)).ToList();
+
+            return natureReserveModel;
+        }
+
+        //Villa
+        public async Task<IList<VillaModel>> GetAllVilla()
+        {
+            var villas = await _unitOfWork.Villas.GetAll();
+            var villaModel = villas.Select(v => new VillaModel(v)).ToList();
+
+            return villaModel;
         }
     }
 }
