@@ -27,9 +27,9 @@ namespace OutdoorPlace.Controllers
         }
 
         [HttpPost("outdoor")]
-        public async Task<IActionResult> CrateOutdoors([FromForm]CreateOutdoorsModel model)
+        public async Task<IActionResult> CrateOutdoors([FromForm] CreateOutdoorsModel model)
         {
-             await _placeService.CreateOutdoor(model);
+            await _placeService.CreateOutdoor(model);
 
             return Ok(model);
         }
@@ -42,8 +42,9 @@ namespace OutdoorPlace.Controllers
 
             return Ok(lakes);
         }
+
         [HttpPost("lake")]
-        public async Task<IActionResult> CreateLakes([FromForm]CreateLakesModel model)
+        public async Task<IActionResult> CreateLakes([FromForm] CreateLakesModel model)
         {
             await _placeService.CreateLakes(model);
 
@@ -57,6 +58,14 @@ namespace OutdoorPlace.Controllers
             var parks = await _placeService.GetAllPark();
 
             return Ok(parks);
+        }
+
+        [HttpPost("park")]
+        public async Task<IActionResult> CreateParks([FromForm] CreateParksModel model)
+        {
+            await _placeService.CreatePark(model);
+
+            return NoContent();
         }
 
         //Fountain

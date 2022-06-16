@@ -30,8 +30,6 @@ namespace Infrastructure.Models.CreateModels
 
         public int WorkingHours { get; set; }
 
-        public DateTime CreateDate { get; set; }
-
         public int RoomCount { get; set; }
 
         public int GuestCount { get; set; }

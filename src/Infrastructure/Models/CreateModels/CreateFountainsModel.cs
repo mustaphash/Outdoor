@@ -31,8 +31,6 @@ namespace Infrastructure.Models.CreateModels
 
         public int WorkingHours { get; set; }
 
-        public DateTime CreateDate { get; set; }
-
         public string InMemoryOf { get; set; }
 
         public int WaterTypeId { get; set; }

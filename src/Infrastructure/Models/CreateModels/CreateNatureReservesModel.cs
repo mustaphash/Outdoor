@@ -30,8 +30,6 @@ namespace Infrastructure.Models.CreateModels
 
         public int WorkingHours { get; set; }
 
-        public DateTime CreateDate { get; set; }
-
         public double Size { get; set; }
 
         public NatureReserve ToNatureReserve()

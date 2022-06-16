@@ -30,8 +30,6 @@ namespace Infrastructure.Models.CreateModels
 
         public int WorkingHours { get; set; }
 
-        public DateTime CreateDate { get; set; }
-
         public Landmark ToLandmark()
         {
             byte[] fileBytes = new byte[] { };

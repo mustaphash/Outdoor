@@ -31,8 +31,6 @@ namespace Infrastructure.Models.CreateModels
 
         public int WorkingHours { get; set; }
 
-        public DateTime CreateDate { get; set; }
-
         public string Safety { get; set; }
 
         public Park ToPark()
