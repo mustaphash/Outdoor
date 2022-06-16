@@ -63,5 +63,21 @@ namespace OutdoorPlace.Controllers
 
             return Ok(fountains);
         }
+
+        [HttpGet("landmarks")]
+        public async Task<IActionResult> GetAllLandmarks()
+        {
+            var landmarks = await _placeService.GetAllLandmarks();
+
+            return Ok(landmarks);
+        }
+
+        [HttpGet("natureReserves")]
+        public async Task<IActionResult> GetAllNatureReserves()
+        {
+            var natureReserves = await _placeService.GetAllNatureReserves();
+
+            return Ok(natureReserves);
+        }
     }
 }
