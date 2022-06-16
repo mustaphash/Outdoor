@@ -16,6 +16,7 @@ namespace OutdoorPlace.Controllers
             _placeService = placeService_;
         }
 
+        //Outdoor
         [HttpGet("outdoors")]
         [ProducesResponseType(typeof(IList<OutdoorModel>), 200)]
         public async Task<IActionResult> GetAllOutdoors()
@@ -33,6 +34,7 @@ namespace OutdoorPlace.Controllers
             return Ok(model);
         }
 
+        //Lake
         [HttpGet("lakes")]
         public async Task<IActionResult> GetAllLakes()
         {
@@ -48,6 +50,7 @@ namespace OutdoorPlace.Controllers
             return Ok(model);
         }
 
+        //Park
         [HttpGet("parks")]
         public async Task<IActionResult> GetAllParks()
         {
@@ -56,6 +59,7 @@ namespace OutdoorPlace.Controllers
             return Ok(parks);
         }
 
+        //Fountain
         [HttpGet("fountains")]
         public async Task<IActionResult> GetAllFountains()
         {
@@ -64,6 +68,7 @@ namespace OutdoorPlace.Controllers
             return Ok(fountains);
         }
 
+        //Landmark
         [HttpGet("landmarks")]
         public async Task<IActionResult> GetAllLandmarks()
         {
@@ -72,6 +77,7 @@ namespace OutdoorPlace.Controllers
             return Ok(landmarks);
         }
 
+        //NatureReserve
         [HttpGet("natureReserves")]
         public async Task<IActionResult> GetAllNatureReserves()
         {
@@ -80,6 +86,7 @@ namespace OutdoorPlace.Controllers
             return Ok(natureReserves);
         }
 
+        //Villa
         [HttpGet("villas")]
         public async Task<IActionResult> GetAllVillas()
         {
