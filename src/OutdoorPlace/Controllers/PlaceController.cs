@@ -127,5 +127,13 @@ namespace OutdoorPlace.Controllers
 
             return Ok(villas);
         }
+
+        [HttpPost("villa")]
+        public async Task<IActionResult> CreateVilla([FromForm] CreateVillasModel model)
+        {
+            await _placeService.CreateVilla(model);
+
+            return NoContent();
+        }
     }
 }
