@@ -38,7 +38,7 @@ namespace Infrastructure.Models.CreateModels
 
         public int ParkingCount { get; set; }
 
-        public Villa ToLake()
+        public Villa ToVilla()
         {
             byte[] fileBytes = new byte[] { };
 
@@ -68,4 +68,4 @@ namespace Infrastructure.Models.CreateModels
         }
     }
 }
-}
+

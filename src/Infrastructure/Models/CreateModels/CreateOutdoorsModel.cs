@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Models
 {
-    public class CreateOutdoorModel
+    public class CreateOutdoorsModel
     {
 #pragma warning disable CS8625
 #pragma warning disable CS8618 
-        public CreateOutdoorModel()
+        public CreateOutdoorsModel()
         {
             Name = string.Empty;
             Description = string.Empty;

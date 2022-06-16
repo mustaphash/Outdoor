@@ -27,7 +27,7 @@ namespace OutdoorPlace.Controllers
         }
 
         [HttpPost("outdoor")]
-        public async Task<IActionResult> CrateOutdoors([FromForm]CreateOutdoorModel model)
+        public async Task<IActionResult> CrateOutdoors([FromForm]CreateOutdoorsModel model)
         {
              await _placeService.CreateOutdoor(model);
 

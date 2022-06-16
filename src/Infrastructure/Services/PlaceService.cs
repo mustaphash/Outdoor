@@ -15,7 +15,7 @@ namespace Infrastructure.Services
         }
 
         //Outdoor
-        public async Task<CreateOutdoorModel> CreateOutdoor(CreateOutdoorModel model)
+        public async Task<CreateOutdoorsModel> CreateOutdoor(CreateOutdoorsModel model)
         {
             var outdoors = model.ToOutdoor();
             await _unitOfWork.Outdoors.Add(outdoors);
@@ -58,6 +58,14 @@ namespace Infrastructure.Services
 
             return parksModel;
         }
+        public async Task<CreateParksModel> CreatePark(CreateParksModel model)
+        {
+            var parks = model.ToPark();
+            await _unitOfWork.Parks.Add(parks);
+            await _unitOfWork.CompleteAsync();
+
+            return model;
+        }
 
         //Fountain
         public async Task<IList<FountainModel>> GetAllFountain()
@@ -66,6 +74,15 @@ namespace Infrastructure.Services
             var fountainModel = fountains.Select(f=>new FountainModel(f)).ToList();
 
             return fountainModel;
+        }
+
+        public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
+        {
+            var fountains = model.ToFountain();
+            await _unitOfWork.Fountains.Add(fountains);
+            await _unitOfWork.CompleteAsync();
+
+            return model;
         }
 
         //Landmark
@@ -77,6 +94,15 @@ namespace Infrastructure.Services
             return landmarkModel;
         }
 
+        public async Task<CreateLandmarksModel> CreateLandmark(CreateLandmarksModel model)
+        {
+            var landmarks = model.ToLandmark();
+            await _unitOfWork.Landmarks.Add(landmarks);
+            await _unitOfWork.CompleteAsync();
+
+            return model;
+        }
+
         //NatureReserve
         public async Task<IList<NatureReserveModel>> GetAllNatureReserves()
         {
@@ -86,6 +112,15 @@ namespace Infrastructure.Services
             return natureReserveModel;
         }
 
+        public async Task<CreateNatureReservesModel> CreateNatureReserve(CreateNatureReservesModel model)
+        {
+            var natureReserves = model.ToNatureReserve();
+            await _unitOfWork.NatureReserves.Add(natureReserves);
+            await _unitOfWork.CompleteAsync();
+
+            return model;
+        }
+
         //Villa
         public async Task<IList<VillaModel>> GetAllVilla()
         {
@@ -93,6 +128,15 @@ namespace Infrastructure.Services
             var villaModel = villas.Select(v => new VillaModel(v)).ToList();
 
             return villaModel;
+        }
+
+        public async Task<CreateVillasModel> CreateVilla(CreateVillasModel model)
+        {
+            var villas = model.ToVilla();
+            await _unitOfWork.Villas.Add(villas);
+            await _unitOfWork.CompleteAsync();
+
+            return model;
         }
     }
 }

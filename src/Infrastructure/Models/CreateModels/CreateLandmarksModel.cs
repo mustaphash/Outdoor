@@ -32,7 +32,7 @@ namespace Infrastructure.Models.CreateModels
 
         public DateTime CreateDate { get; set; }
 
-        public Landmark ToLake()
+        public Landmark ToLandmark()
         {
             byte[] fileBytes = new byte[] { };
 

@@ -3,15 +3,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Models.CreateModels
 {
-    public class CreateNatureReserveModel
+    public class CreateParksModel
     {
 #pragma warning disable CS8618
 #pragma warning disable CS8625
-        public CreateNatureReserveModel()
+        public CreateParksModel()
         {
             Name = string.Empty;
             Description = string.Empty;
             Image = null;
+            Safety = string.Empty;
         }
 #pragma warning restore CS8625
 #pragma warning restore CS8618
@@ -32,9 +33,9 @@ namespace Infrastructure.Models.CreateModels
 
         public DateTime CreateDate { get; set; }
 
-        public double Size { get; set; }
+        public string Safety { get; set; }
 
-        public NatureReserve ToLake()
+        public Park ToPark()
         {
             byte[] fileBytes = new byte[] { };
 
@@ -46,7 +47,7 @@ namespace Infrastructure.Models.CreateModels
                     fileBytes = ms.ToArray();
                 }
             }
-            return new NatureReserve
+            return new Park
             {
                 Name = Name,
                 Description = Description,
@@ -56,7 +57,7 @@ namespace Infrastructure.Models.CreateModels
                 Latitude = Latitude,
                 WorkingHours = WorkingHours,
                 CreateDate = DateTime.Now,
-                Size = Size
+                Safety = Safety,
             };
 
         }
