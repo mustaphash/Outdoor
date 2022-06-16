@@ -77,6 +77,14 @@ namespace OutdoorPlace.Controllers
             return Ok(fountains);
         }
 
+        [HttpPost("fountain")]
+        public async Task<IActionResult> CreateFountain([FromForm] CreateFountainsModel model)
+        {
+            await _placeService.CreateFountain(model);
+
+            return NoContent();
+        }
+
         //Landmark
         [HttpGet("landmarks")]
         public async Task<IActionResult> GetAllLandmarks()
