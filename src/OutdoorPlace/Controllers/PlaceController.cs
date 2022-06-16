@@ -79,5 +79,13 @@ namespace OutdoorPlace.Controllers
 
             return Ok(natureReserves);
         }
+
+        [HttpGet("villas")]
+        public async Task<IActionResult> GetAllVillas()
+        {
+            var villas = await _placeService.GetAllVilla();
+
+            return Ok(villas);
+        }
     }
 }
