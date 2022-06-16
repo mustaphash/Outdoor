@@ -111,6 +111,14 @@ namespace OutdoorPlace.Controllers
             return Ok(natureReserves);
         }
 
+        [HttpPost("natureReserve")]
+        public async Task<IActionResult> CreateNatureReserve([FromForm] CreateNatureReservesModel model)
+        {
+            await _placeService.CreateNatureReserve(model);
+
+            return NoContent();
+        }
+
         //Villa
         [HttpGet("villas")]
         public async Task<IActionResult> GetAllVillas()
