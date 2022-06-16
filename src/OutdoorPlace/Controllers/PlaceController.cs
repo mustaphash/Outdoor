@@ -94,6 +94,14 @@ namespace OutdoorPlace.Controllers
             return Ok(landmarks);
         }
 
+        [HttpPost("landmark")]
+        public async Task<IActionResult> CreateLandmark([FromForm] CreateLandmarksModel model)
+        {
+            await _placeService.CreateLandmark(model);
+
+            return NoContent();
+        }
+
         //NatureReserve
         [HttpGet("natureReserves")]
         public async Task<IActionResult> GetAllNatureReserves()
