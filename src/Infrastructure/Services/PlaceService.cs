@@ -68,6 +68,17 @@ namespace Infrastructure.Services
             return model;
         }
 
+        public async Task Delete(int parkId)
+        {
+            var park = await _unitOfWork.Parks.GetParkById(parkId);
+            if (park != null)
+            {
+                _unitOfWork.Parks.Delete(park);
+                await _unitOfWork.CompleteAsync();
+            }
+
+        }
+
         //Fountain
         public async Task<IList<FountainModel>> GetAllFountain()
         {
@@ -140,16 +151,5 @@ namespace Infrastructure.Services
             return model;
         }
 
-
-        public async Task Delete(int parkId)
-        {
-            var park = await _unitOfWork.Parks.GetParkById(parkId);
-            if (park != null)
-            {
-                _unitOfWork.Parks.Delete(park);
-                await _unitOfWork.CompleteAsync();
-            }
-            
-        }
     }
 }

@@ -12,13 +12,13 @@ namespace DAL.Repositories
             _context = context;
         }
 
+#pragma warning disable CS8603
         public async Task<Park> GetParkById(int id)
         {
             var park = await _context.Parks.FirstOrDefaultAsync(p => p.Id == id);
 
-#pragma warning disable CS8603 // Possible null reference return.
             return park;
-#pragma warning restore CS8603 // Possible null reference return.
         }
+#pragma warning disable CS8603
     }
 }
