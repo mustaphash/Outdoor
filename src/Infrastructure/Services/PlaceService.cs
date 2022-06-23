@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-using DAL;
+﻿using DAL;
 using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
@@ -49,6 +48,16 @@ namespace Infrastructure.Services
             await _unitOfWork.CompleteAsync();
 
             return model;
+        }
+
+        public async Task DeleteLake(int lakeId)
+        {
+            var lake = await _unitOfWork.Lakes.GetLakeById(lakeId);
+            if (lake != null)
+            {
+                _unitOfWork.Lakes.Delete(lake);
+                await _unitOfWork.CompleteAsync();
+            }
         }
 
         //Park
@@ -151,5 +160,30 @@ namespace Infrastructure.Services
             return model;
         }
 
+
+        public Task DeletePark(int parkId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteFountain(int fountainId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteLandmark(int landmarkId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteNatureReserve(int reserveId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteVilla(int villaId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
