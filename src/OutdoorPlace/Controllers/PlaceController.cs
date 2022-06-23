@@ -68,6 +68,15 @@ namespace OutdoorPlace.Controllers
             return NoContent();
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteParks(int parkId)
+        {
+            
+            await _placeService.Delete(parkId);
+
+            return NoContent();
+        }
+
         //Fountain
         [HttpGet("fountains")]
         public async Task<IActionResult> GetAllFountains()

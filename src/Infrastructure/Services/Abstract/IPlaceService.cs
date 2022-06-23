@@ -1,4 +1,5 @@
-﻿using Infrastructure.Models;
+﻿using Core.Entities;
+using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 
 namespace Infrastructure.Services.Abstract
@@ -16,6 +17,8 @@ namespace Infrastructure.Services.Abstract
         Task<IList<ParkModel>> GetAllPark();
 
         Task<CreateParksModel> CreatePark(CreateParksModel model);
+
+        Task Delete(int parkId);
 
         Task<IList<FountainModel>> GetAllFountain();
 

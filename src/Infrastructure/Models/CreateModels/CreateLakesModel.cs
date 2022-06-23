@@ -30,6 +30,8 @@ namespace Infrastructure.Models.CreateModels
 
         public int WorkingHours { get; set; }
 
+        public List<int> Animals { get; set; }
+
         public Lake ToLake()
         {
             byte[] fileBytes = new byte[] { };

@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using Core.Entities;
+using DAL;
 using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
@@ -71,7 +72,7 @@ namespace Infrastructure.Services
         public async Task<IList<FountainModel>> GetAllFountain()
         {
             var fountains = await _unitOfWork.Fountains.GetAll();
-            var fountainModel = fountains.Select(f=>new FountainModel(f)).ToList();
+            var fountainModel = fountains.Select(f => new FountainModel(f)).ToList();
 
             return fountainModel;
         }
@@ -107,7 +108,7 @@ namespace Infrastructure.Services
         public async Task<IList<NatureReserveModel>> GetAllNatureReserves()
         {
             var natureReserves = await _unitOfWork.NatureReserves.GetAll();
-            var natureReserveModel = natureReserves.Select(n=> new NatureReserveModel(n)).ToList();
+            var natureReserveModel = natureReserves.Select(n => new NatureReserveModel(n)).ToList();
 
             return natureReserveModel;
         }
@@ -137,6 +138,18 @@ namespace Infrastructure.Services
             await _unitOfWork.CompleteAsync();
 
             return model;
+        }
+
+
+        public async Task Delete(int parkId)
+        {
+            var park = await _unitOfWork.Parks.GetParkById(parkId);
+            if (park != null)
+            {
+                _unitOfWork.Parks.Delete(park);
+                await _unitOfWork.CompleteAsync();
+            }
+            
         }
     }
 }
