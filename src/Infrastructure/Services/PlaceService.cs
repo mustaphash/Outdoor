@@ -77,7 +77,7 @@ namespace Infrastructure.Services
             return model;
         }
 
-        public async Task Delete(int parkId)
+        public async Task DeletePark(int parkId)
         {
             var park = await _unitOfWork.Parks.GetParkById(parkId);
             if (park != null)
@@ -106,6 +106,16 @@ namespace Infrastructure.Services
             return model;
         }
 
+        public async Task DeleteFountain(int fountainId)
+        {
+            var fountain = await _unitOfWork.Fountains.GetFountainById(fountainId);
+            if (fountain != null)
+            {
+                _unitOfWork.Fountains.Delete(fountain);
+                await _unitOfWork.CompleteAsync();
+            }
+        }
+
         //Landmark
         public async Task<IList<LandmarkModel>> GetAllLandmarks()
         {
@@ -122,6 +132,16 @@ namespace Infrastructure.Services
             await _unitOfWork.CompleteAsync();
 
             return model;
+        }
+
+        public async Task DeleteLandmark(int landmarkId)
+        {
+            var landmark = await _unitOfWork.Landmarks.GetLandmarkById(landmarkId);
+            if (landmark != null)
+            {
+                _unitOfWork.Landmarks.Delete(landmark);
+                await _unitOfWork.CompleteAsync();
+            }
         }
 
         //NatureReserve
@@ -142,6 +162,16 @@ namespace Infrastructure.Services
             return model;
         }
 
+        public async Task DeleteNatureReserve(int reserveId)
+        {
+            var reserve = await _unitOfWork.NatureReserves.GetReserveById(reserveId);
+            if (reserve != null)
+            {
+                _unitOfWork.NatureReserves.Delete(reserve);
+                await _unitOfWork.CompleteAsync();
+            }
+        }
+
         //Villa
         public async Task<IList<VillaModel>> GetAllVilla()
         {
@@ -160,30 +190,14 @@ namespace Infrastructure.Services
             return model;
         }
 
-
-        public Task DeletePark(int parkId)
+        public async Task DeleteVilla(int villaId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteFountain(int fountainId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteLandmark(int landmarkId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteNatureReserve(int reserveId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteVilla(int villaId)
-        {
-            throw new NotImplementedException();
+            var villa = await _unitOfWork.Villas.GetVillaById(villaId);
+            if (villa != null)
+            {
+                _unitOfWork.Villas.Delete(villa);
+                await _unitOfWork.CompleteAsync();
+            }
         }
     }
 }
