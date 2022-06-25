@@ -152,6 +152,14 @@ namespace OutdoorPlace.Controllers
             return NoContent();
         }
 
+        [HttpDelete("natureReserve")]
+        public async Task<IActionResult> DeleteNatureReserve(int natureReserveId)
+        {
+            await _placeService.DeleteNatureReserve(natureReserveId);
+
+            return NoContent();
+        }
+
         //Villa
         [HttpGet("villas")]
         public async Task<IActionResult> GetAllVillas()
