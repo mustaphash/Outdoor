@@ -176,5 +176,13 @@ namespace OutdoorPlace.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("villa")]
+        public async Task<IActionResult> DeleteVilla(int villaId)
+        {
+            await _placeService.DeleteVilla(villaId);
+
+            return NoContent();
+        }
     }
 }
