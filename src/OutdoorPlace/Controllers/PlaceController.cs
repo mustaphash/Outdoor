@@ -102,6 +102,14 @@ namespace OutdoorPlace.Controllers
             return NoContent();
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteFountain(int fountainId)
+        {
+            await _placeService.DeleteFountain(fountainId);
+
+            return NoContent();
+        }
+
         //Landmark
         [HttpGet("landmarks")]
         public async Task<IActionResult> GetAllLandmarks()
