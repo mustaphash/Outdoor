@@ -102,7 +102,7 @@ namespace OutdoorPlace.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("fountain")]
         public async Task<IActionResult> DeleteFountain(int fountainId)
         {
             await _placeService.DeleteFountain(fountainId);
@@ -123,6 +123,14 @@ namespace OutdoorPlace.Controllers
         public async Task<IActionResult> CreateLandmark([FromForm] CreateLandmarksModel model)
         {
             await _placeService.CreateLandmark(model);
+
+            return NoContent();
+        }
+
+        [HttpDelete("landmark")]
+        public async Task<IActionResult> DeleteLandmark(int landmarkId)
+        {
+            await _placeService.DeleteLandmark(landmarkId);
 
             return NoContent();
         }
