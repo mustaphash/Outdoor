@@ -51,6 +51,14 @@ namespace OutdoorPlace.Controllers
             return Ok(model);
         }
 
+        [HttpDelete("lake")]
+        public async Task<IActionResult> DeleteLakes(int lakeId)
+        {
+            await _placeService.DeleteLake(lakeId);
+
+            return NoContent();
+        }
+
         //Park
         [HttpGet("parks")]
         public async Task<IActionResult> GetAllParks()
@@ -68,11 +76,11 @@ namespace OutdoorPlace.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("park")]
         public async Task<IActionResult> DeleteParks(int parkId)
         {
             
-            await _placeService.Delete(parkId);
+            await _placeService.DeletePark(parkId);
 
             return NoContent();
         }
