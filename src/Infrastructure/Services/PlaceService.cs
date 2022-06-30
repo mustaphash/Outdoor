@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using Core.Entities;
+using DAL;
 using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
@@ -35,7 +36,7 @@ namespace Infrastructure.Services
         //Lake
         public async Task<IList<LakeModel>> GetAllLakes()
         {
-            var lakes = await _unitOfWork.Lakes.GetAll();
+            var lakes = await _unitOfWork.Lakes.GetAllAnimals();
             var lakesModel = lakes.Select(l => new LakeModel(l)).ToList();
 
             return lakesModel;
@@ -43,7 +44,13 @@ namespace Infrastructure.Services
 
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
+            var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
             var lakes = model.ToLake();
+            lakes.Animals = new List<Animal>();
+            foreach (var animal in animals)
+            {
+                lakes.Animals.Add(animal);
+            }
             await _unitOfWork.Lakes.Add(lakes);
             await _unitOfWork.CompleteAsync();
 

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
+#pragma warning disable CS8603
     public class LakeRepository : BaseRepository<Lake>, ILakeRepositry
     {
         private OutdoorContext _context;
@@ -12,10 +13,17 @@ namespace DAL.Repositories
             _context = context;
         }
 
-#pragma warning disable CS8603 
+        public async Task<List<Lake>> GetAllAnimals()
+        {
+            var lakes = await _context.Lakes.Include(a => a.Animals).Include(e => e.Extras).ToListAsync();
+
+            return lakes;
+        }
+
+
         public async Task<Lake> GetLakeById(int id)
         {
-            var lake = await _context.Lakes.FirstOrDefaultAsync(l => l.Id == id);
+            var lake = await _context.Lakes.Include(a => a.Animals).FirstOrDefaultAsync(l => l.Id == id);
 
             return lake;
         }
