@@ -13,7 +13,7 @@ namespace DAL.Repositories
             _context = context;
         }
 
-        public async Task<List<Lake>> GetAllAnimals()
+        public async Task<List<Lake>> GetAllLakes()
         {
             var lakes = await _context.Lakes.Include(a => a.Animals).Include(e => e.Extras).ToListAsync();
 

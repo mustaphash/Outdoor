@@ -12,6 +12,13 @@ namespace DAL.Repositories
             _context = context;
         }
 
+        public async Task<List<Fountain>> GetAllFountains()
+        {
+            var fountain = await _context.Fountains.Include(e => e.Extras).Include(w=>w.WaterType).ToListAsync();
+
+            return fountain;
+        }
+
 #pragma warning disable CS8603
         public async Task<Fountain> GetFountainById(int id)
         {

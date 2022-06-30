@@ -36,7 +36,7 @@ namespace Infrastructure.Services
         //Lake
         public async Task<IList<LakeModel>> GetAllLakes()
         {
-            var lakes = await _unitOfWork.Lakes.GetAllAnimals();
+            var lakes = await _unitOfWork.Lakes.GetAllLakes();
             var lakesModel = lakes.Select(l => new LakeModel(l)).ToList();
 
             return lakesModel;
@@ -104,7 +104,7 @@ namespace Infrastructure.Services
         //Fountain
         public async Task<IList<FountainModel>> GetAllFountain()
         {
-            var fountains = await _unitOfWork.Fountains.GetAll();
+            var fountains = await _unitOfWork.Fountains.GetAllFountains();
             var fountainModel = fountains.Select(f => new FountainModel(f)).ToList();
 
             return fountainModel;
@@ -112,7 +112,13 @@ namespace Infrastructure.Services
 
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
+            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
             var fountains = model.ToFountain();
+            fountains.Extras = new List<Extras>();
+            foreach (var extra in extras)
+            {
+                fountains.Extras.Add(extra);
+            }
             await _unitOfWork.Fountains.Add(fountains);
             await _unitOfWork.CompleteAsync();
 

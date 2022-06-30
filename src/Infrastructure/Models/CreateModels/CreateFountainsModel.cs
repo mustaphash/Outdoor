@@ -35,6 +35,8 @@ namespace Infrastructure.Models.CreateModels
 
         public int WaterTypeId { get; set; }
 
+        public List<int> Extras { get; set; }
+
         public Fountain ToFountain()
         {
             byte[] fileBytes = new byte[] { };
