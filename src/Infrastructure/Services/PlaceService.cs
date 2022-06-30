@@ -45,11 +45,17 @@ namespace Infrastructure.Services
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
+            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
             var lakes = model.ToLake();
             lakes.Animals = new List<Animal>();
+            lakes.Extras = new List<Extras>();
             foreach (var animal in animals)
             {
                 lakes.Animals.Add(animal);
+            }
+            foreach (var extra in extras)
+            {
+                lakes.Extras.Add(extra);
             }
             await _unitOfWork.Lakes.Add(lakes);
             await _unitOfWork.CompleteAsync();

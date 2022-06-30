@@ -12,14 +12,6 @@ namespace DAL.Repositories
             _context = context;
         }
 
-        public async Task<Animal> GetAnimalById(int id)
-        {
-            var animal = await _context.Animals.FirstOrDefaultAsync(a => a.Id == id);
-            //Where List<Animals> Contains Animal.Id
-
-            return animal;
-        }
-
         public async Task<List<Animal>> GetAnimalsByIds(List<int> ids)
         {
             var animal = await _context.Animals.Where(a => ids.Contains(a.Id)).ToListAsync();
