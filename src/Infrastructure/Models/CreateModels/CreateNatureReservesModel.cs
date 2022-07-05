@@ -32,6 +32,10 @@ namespace Infrastructure.Models.CreateModels
 
         public double Size { get; set; }
 
+        public List<int> Animals { get; set; }
+
+        public List<int> Extras { get; set; }
+
         public NatureReserve ToNatureReserve()
         {
             byte[] fileBytes = new byte[] { };

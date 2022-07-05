@@ -35,6 +35,8 @@ namespace Infrastructure.Models.CreateModels
         public int GuestCount { get; set; }
 
         public int ParkingCount { get; set; }
+        
+        public List<int> Extras { get; set; }
 
         public Villa ToVilla()
         {

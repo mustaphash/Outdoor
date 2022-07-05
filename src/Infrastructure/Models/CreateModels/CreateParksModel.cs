@@ -33,6 +33,10 @@ namespace Infrastructure.Models.CreateModels
 
         public string Safety { get; set; }
 
+        public List<int> Animals { get; set; }
+
+        public List<int> Extras { get; set; }
+
         public Park ToPark()
         {
             byte[] fileBytes = new byte[] { };
