@@ -6,7 +6,11 @@ using Infrastructure.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Host.ConfigureLogging(loggin =>
+{
+    loggin.ClearProviders();
+    loggin.AddConsole();
+});
 // Add services to the container.
 
 builder.Services.AddControllers();

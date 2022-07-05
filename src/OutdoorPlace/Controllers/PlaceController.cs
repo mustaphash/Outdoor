@@ -10,10 +10,12 @@ namespace OutdoorPlace.Controllers
     public class PlaceController : Controller
     {
         private readonly IPlaceService _placeService;
+        private readonly ILogger _logger;
 
-        public PlaceController(IPlaceService placeService_)
+        public PlaceController(ILogger<PlaceController> logger, IPlaceService placeService_)
         {
             _placeService = placeService_;
+            _logger = logger;
         }
 
         //Outdoor
@@ -38,6 +40,7 @@ namespace OutdoorPlace.Controllers
         [HttpGet("lakes")]
         public async Task<IActionResult> GetAllLakes()
         {
+            _logger.LogInformation("Hi from Controller");
             var lakes = await _placeService.GetAllLakes();
 
             return Ok(lakes);

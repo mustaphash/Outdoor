@@ -5,6 +5,8 @@
 #pragma warning disable CS8618 
         public Extras()
         {
+            Name = string.Empty;
+            Description = string.Empty;
         }
 #pragma warning restore CS8618
 
