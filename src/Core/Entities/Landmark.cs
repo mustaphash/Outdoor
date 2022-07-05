@@ -2,10 +2,11 @@
 {
     public class Landmark : Outdoor
     {
+#pragma warning disable CS8618
         public Landmark()
         {
-            Extras = new List<Extras>();
         }
+#pragma warning restore CS8618
 
         public ICollection<Extras> Extras { get; set; }
     }

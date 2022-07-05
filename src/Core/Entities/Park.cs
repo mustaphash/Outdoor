@@ -2,12 +2,12 @@
 {
     public class Park : Outdoor
     {
+
+#pragma warning disable CS8618 
         public Park()
         {
-            Safety = string.Empty;
-            Animals = new List<Animal>();
-            Extras = new List<Extras>();
         }
+#pragma warning restore CS8618
 
         public string Safety { get; set; }
 

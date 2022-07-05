@@ -2,11 +2,11 @@
 {
     public class WaterType
     {
+#pragma warning disable CS8618 
         public WaterType()
         {
-            Name = string.Empty;
-            Fountains = new List<Fountain>();
         }
+#pragma warning restore CS8618
 
         public int Id { get; set; }
 

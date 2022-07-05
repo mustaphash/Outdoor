@@ -4,8 +4,8 @@
     {
         public Lake()
         {
-            Animals = new List<Animal>();
-            Extras = new List<Extras>();
+            Animals = null!;
+            Extras = null!;
         }
 
         public ICollection<Animal> Animals { get; set; }

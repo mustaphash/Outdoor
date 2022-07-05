@@ -2,12 +2,11 @@
 {
     public class Fountain : Outdoor
     {
+#pragma warning disable CS8618 
         public Fountain()
         {
-            InMemoryOf = string.Empty;
-            Extras = new List<Extras>();
-            WaterType = new WaterType();
         }
+#pragma warning restore CS8618
 
         public string InMemoryOf { get; set; }
 

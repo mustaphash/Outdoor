@@ -3,16 +3,18 @@ using DAL;
 using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Services
 {
     public class PlaceService : IPlaceService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public PlaceService(IUnitOfWork unitOfWork)
+        private readonly ILogger _logger;
+        public PlaceService(IUnitOfWork unitOfWork, ILogger<PlaceService> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         //Outdoor
@@ -36,6 +38,7 @@ namespace Infrastructure.Services
         //Lake
         public async Task<IList<LakeModel>> GetAllLakes()
         {
+            _logger.LogInformation(string.Format("Hi from GetAllLakes, PlaceService!"));
             var lakes = await _unitOfWork.Lakes.GetAllLakes();
             var lakesModel = lakes.Select(l => new LakeModel(l)).ToList();
 
@@ -125,7 +128,6 @@ namespace Infrastructure.Services
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
             var fountains = model.ToFountain();
-            fountains.WaterType = null;
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             fountains.Extras = new List<Extras>();
             foreach (var extra in extras)

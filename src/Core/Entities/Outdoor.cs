@@ -2,12 +2,11 @@
 {
     public class Outdoor
     {
+#pragma warning disable CS8618 
         public Outdoor()
         {
-            Name = string.Empty;
-            Description = string.Empty;
-            Image = Array.Empty<byte>();
         }
+#pragma warning restore CS8618
 
         public int Id { get; set; }
 

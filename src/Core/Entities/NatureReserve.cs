@@ -2,11 +2,11 @@
 {
     public class NatureReserve : Outdoor
     {
+#pragma warning disable CS8618
         public NatureReserve()
         {
-            Animal = new List<Animal>();
-            Extras = new List<Extras>();
         }
+#pragma warning restore CS8618
 
         public double Size { get; set; }
 

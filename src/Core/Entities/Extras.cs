@@ -2,17 +2,11 @@
 {
     public class Extras
     {
+#pragma warning disable CS8618 
         public Extras()
         {
-            Name = string.Empty;
-            Description = string.Empty;
-            Fountains = new List<Fountain>();
-            Lakes = new List<Lake>();
-            Landmarks = new List<Landmark>();
-            Villas = new List<Villa>();
-            NatureReserves = new List<NatureReserve>();
-            Parks = new List<Park>();
         }
+#pragma warning restore CS8618
 
         public int Id { get; set; }
 

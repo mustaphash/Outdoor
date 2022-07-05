@@ -2,10 +2,11 @@
 {
     public class Villa : Outdoor
     {
+#pragma warning disable CS8618 
         public Villa()
         {
-            Extras = new List<Extras>();
         }
+#pragma warning restore CS8618
 
         public int RoomCount { get; set; }
 

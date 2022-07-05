@@ -2,14 +2,11 @@
 {
     public class Animal
     {
+#pragma warning disable CS8618 
         public Animal()
         {
-            Name = string.Empty;
-            Description = string.Empty;
-            Lakes = new List<Lake>();
-            NatureReserves = new List<NatureReserve>();
-            Parks = new List<Park>();
         }
+#pragma warning restore CS8618
 
         public int Id { get; set; }
 
