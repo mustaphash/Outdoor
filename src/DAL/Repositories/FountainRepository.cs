@@ -22,7 +22,7 @@ namespace DAL.Repositories
 #pragma warning disable CS8603
         public async Task<Fountain> GetFountainById(int id)
         {
-            var fountain = await _context.Fountains.Include(e => e.Extras).FirstOrDefaultAsync(f => f.Id == id);
+            var fountain = await _context.Fountains.Include(e => e.Extras).Include(w => w.WaterType).FirstOrDefaultAsync(f => f.Id == id);
 
             return fountain;
         }

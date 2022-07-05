@@ -19,7 +19,7 @@ namespace Infrastructure.Models
             WorkingHours = fountain.WorkingHours;
             CreateDate = fountain.CreateDate;
             InMemoryOf = fountain.InMemoryOf;
-            WaterTypeId = fountain.WaterTypeId;
+            WaterType = fountain.WaterType.Name;
             Extras = fountain.Extras.Select(e => new ExtrasModel(e));
         }
 #pragma warning restore CS8618
@@ -45,7 +45,7 @@ namespace Infrastructure.Models
 
         public string InMemoryOf { get; set; }
 
-        public int WaterTypeId { get; set; }
+        public string WaterType { get; set; }
 
         public IEnumerable<ExtrasModel> Extras { get; set; }
 

@@ -12,7 +12,7 @@ namespace DAL.Repositories
             _context = outdoorContext;
         }
 
-        public async Task<List<Extras>> GetExtraByIds(List<int> ids)
+        public async Task<List<Extras>> GetExtrasByIds(List<int> ids)
         {
             var extras = await _context.Extras.Where(e => ids.Contains(e.Id)).ToListAsync();
 

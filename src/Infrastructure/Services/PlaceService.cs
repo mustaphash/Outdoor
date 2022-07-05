@@ -45,7 +45,7 @@ namespace Infrastructure.Services
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
-            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
+            var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var lakes = model.ToLake();
             lakes.Animals = new List<Animal>();
             lakes.Extras = new List<Extras>();
@@ -84,7 +84,7 @@ namespace Infrastructure.Services
         public async Task<CreateParksModel> CreatePark(CreateParksModel model)
         {
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
-            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
+            var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var parks = model.ToPark();
             parks.Animals = new List<Animal>();
             parks.Extras = new List<Extras>();
@@ -124,8 +124,9 @@ namespace Infrastructure.Services
 
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
-            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
             var fountains = model.ToFountain();
+            fountains.WaterType = null;
+            var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             fountains.Extras = new List<Extras>();
             foreach (var extra in extras)
             {
@@ -158,7 +159,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateLandmarksModel> CreateLandmark(CreateLandmarksModel model)
         {
-            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
+            var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var landmarks = model.ToLandmark();
             landmarks.Extras = new List<Extras>();
             foreach (var extra in extras)
@@ -193,7 +194,7 @@ namespace Infrastructure.Services
         public async Task<CreateNatureReservesModel> CreateNatureReserve(CreateNatureReservesModel model)
         {
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
-            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
+            var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var natureReserves = model.ToNatureReserve();
             natureReserves.Animal = new List<Animal>();
             natureReserves.Extras = new List<Extras>();
@@ -232,7 +233,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateVillasModel> CreateVilla(CreateVillasModel model)
         {
-            var extras = await _unitOfWork.Extras.GetExtraByIds(model.Extras);
+            var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var villas = model.ToVilla();
             villas.Extras = new List<Extras>();
             foreach (var extra in extras)
