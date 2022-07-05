@@ -12,10 +12,17 @@ namespace DAL.Repositories
             _context = context;
         }
 
+        public async Task<List<Landmark>> GetAllLandmarks()
+        {
+            var landmark = await _context.Landmarks.Include(e => e.Extras).ToListAsync();
+
+            return landmark;
+        }
+
 #pragma warning disable CS8603
         public async Task<Landmark> GetLandmarkById(int id)
         {
-            var landmark = await _context.Landmarks.FirstOrDefaultAsync(l => l.Id == id);
+            var landmark = await _context.Landmarks.Include(e => e.Extras).FirstOrDefaultAsync(l => l.Id == id);
 
             return landmark;
         }

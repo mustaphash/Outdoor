@@ -12,10 +12,17 @@ namespace DAL.Repositories
             _context = context;
         }
 
+        public async Task<List<Villa>> GetAllVillas()
+        {
+            var villa = await _context.Villas.Include(e => e.Extras).ToListAsync();
+
+            return villa;
+        }
+
 #pragma warning disable CS8603
         public async Task<Villa> GetVillaById(int id)
         {
-            var villa = await _context.Villas.FirstOrDefaultAsync(v=>v.Id == id);
+            var villa = await _context.Villas.Include(e => e.Extras).FirstOrDefaultAsync(v => v.Id == id);
 
             return villa;
         }

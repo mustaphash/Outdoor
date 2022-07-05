@@ -14,7 +14,7 @@ namespace DAL.Repositories
 
         public async Task<List<Fountain>> GetAllFountains()
         {
-            var fountain = await _context.Fountains.Include(e => e.Extras).Include(w=>w.WaterType).ToListAsync();
+            var fountain = await _context.Fountains.Include(e => e.Extras).Include(w => w.WaterType).ToListAsync();
 
             return fountain;
         }
@@ -22,7 +22,7 @@ namespace DAL.Repositories
 #pragma warning disable CS8603
         public async Task<Fountain> GetFountainById(int id)
         {
-            var fountain = await _context.Fountains.FirstOrDefaultAsync(f => f.Id == id);
+            var fountain = await _context.Fountains.Include(e => e.Extras).FirstOrDefaultAsync(f => f.Id == id);
 
             return fountain;
         }

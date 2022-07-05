@@ -12,11 +12,18 @@ namespace DAL.Repositories
             _context = context;
         }
 
+        public async Task<List<NatureReserve>> GetAllReserves()
+        {
+            var reserve = await _context.NatureReserves.Include(a => a.Animal).Include(e => e.Extras).ToListAsync();
+
+            return reserve;
+        }
+
 #pragma warning disable CS8603
         public async Task<NatureReserve> GetReserveById(int id)
         {
-            var natureReserve = await _context.NatureReserves.FirstOrDefaultAsync(n => n.Id == id);
- 
+            var natureReserve = await _context.NatureReserves.Include(a => a.Animal).Include(e => e.Extras).FirstOrDefaultAsync(n => n.Id == id);
+
             return natureReserve;
         }
 #pragma warning disable CS8603 
