@@ -56,6 +56,8 @@ namespace Infrastructure.Services
 
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateLakes)));
+
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var lakes = model.ToLake();
@@ -72,6 +74,7 @@ namespace Infrastructure.Services
             await _unitOfWork.Lakes.Add(lakes);
             await _unitOfWork.CompleteAsync();
 
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateLakes)));
             return model;
         }
 
@@ -97,6 +100,7 @@ namespace Infrastructure.Services
         }
         public async Task<CreateParksModel> CreatePark(CreateParksModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreatePark)));
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var parks = model.ToPark();
@@ -113,6 +117,7 @@ namespace Infrastructure.Services
             await _unitOfWork.Parks.Add(parks);
             await _unitOfWork.CompleteAsync();
 
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreatePark)));
             return model;
         }
 
@@ -131,6 +136,7 @@ namespace Infrastructure.Services
         public async Task<IList<FountainModel>> GetAllFountain()
         {
             _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllFountain)));
+
             var fountains = await _unitOfWork.Fountains.GetAllFountains();
             var fountainModel = fountains.Select(f => new FountainModel(f)).ToList();
 
@@ -140,6 +146,8 @@ namespace Infrastructure.Services
 
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateFountain)));
+
             var fountains = model.ToFountain();
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             fountains.Extras = new List<Extras>();
@@ -150,6 +158,7 @@ namespace Infrastructure.Services
             await _unitOfWork.Fountains.Add(fountains);
             await _unitOfWork.CompleteAsync();
 
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateFountain)));
             return model;
         }
 
@@ -167,6 +176,7 @@ namespace Infrastructure.Services
         public async Task<IList<LandmarkModel>> GetAllLandmarks()
         {
             _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllLandmarks)));
+
             var landmarks = await _unitOfWork.Landmarks.GetAllLandmarks();
             var landmarkModel = landmarks.Select(l => new LandmarkModel(l)).ToList();
 
@@ -176,6 +186,8 @@ namespace Infrastructure.Services
 
         public async Task<CreateLandmarksModel> CreateLandmark(CreateLandmarksModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateFountain)));
+
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var landmarks = model.ToLandmark();
             landmarks.Extras = new List<Extras>();
@@ -186,6 +198,7 @@ namespace Infrastructure.Services
             await _unitOfWork.Landmarks.Add(landmarks);
             await _unitOfWork.CompleteAsync();
 
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateFountain)));
             return model;
         }
 
@@ -203,6 +216,7 @@ namespace Infrastructure.Services
         public async Task<IList<NatureReserveModel>> GetAllNatureReserves()
         {
             _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllNatureReserves)));
+
             var natureReserves = await _unitOfWork.NatureReserves.GetAllReserves();
             var natureReserveModel = natureReserves.Select(n => new NatureReserveModel(n)).ToList();
 
@@ -212,6 +226,8 @@ namespace Infrastructure.Services
 
         public async Task<CreateNatureReservesModel> CreateNatureReserve(CreateNatureReservesModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateNatureReserve)));
+
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var natureReserves = model.ToNatureReserve();
@@ -228,6 +244,7 @@ namespace Infrastructure.Services
             await _unitOfWork.NatureReserves.Add(natureReserves);
             await _unitOfWork.CompleteAsync();
 
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateNatureReserve)));
             return model;
         }
 
@@ -254,6 +271,8 @@ namespace Infrastructure.Services
 
         public async Task<CreateVillasModel> CreateVilla(CreateVillasModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateVilla)));
+
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var villas = model.ToVilla();
             villas.Extras = new List<Extras>();
@@ -263,7 +282,8 @@ namespace Infrastructure.Services
             }
             await _unitOfWork.Villas.Add(villas);
             await _unitOfWork.CompleteAsync();
-
+            
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateVilla)));
             return model;
         }
 
