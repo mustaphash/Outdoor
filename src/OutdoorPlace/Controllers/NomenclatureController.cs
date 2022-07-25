@@ -1,4 +1,6 @@
-﻿using Infrastructure.Models;
+﻿using Common;
+using Common.LoggerRecources;
+using Infrastructure.Models;
 using Infrastructure.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +11,12 @@ namespace OutdoorPlace.Controllers
     public class NomenclatureController : Controller
     {
         private readonly INomenclatureService _nomenclatureService;
+        private readonly ILogger _logger;
 
-        public NomenclatureController(INomenclatureService nomenclatureService)
+        public NomenclatureController(INomenclatureService nomenclatureService, ILogger logger)
         {
             _nomenclatureService = nomenclatureService;
+            _logger = logger;
         }
 
         [HttpGet("animals")]
@@ -21,6 +25,7 @@ namespace OutdoorPlace.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllAnimals()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(NomenclatureController), nameof(GetAllAnimals)));
             var animals = await _nomenclatureService.GetAllAnimals();
 
             return Ok(animals);
@@ -32,6 +37,7 @@ namespace OutdoorPlace.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllExtras()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(NomenclatureController), nameof(GetAllExtras)));
             var extras = await _nomenclatureService.GetAllExtras();
 
             return Ok(extras);
@@ -43,6 +49,7 @@ namespace OutdoorPlace.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllWaterTypes()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(NomenclatureController), nameof(GetAllWaterTypes)));
             var waterTypes = await _nomenclatureService.GetAllWaterTypes();
 
             return Ok(waterTypes);
