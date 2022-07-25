@@ -80,12 +80,15 @@ namespace Infrastructure.Services
 
         public async Task DeleteLake(int lakeId)
         {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeleteLake)));
+
             var lake = await _unitOfWork.Lakes.GetLakeById(lakeId);
             if (lake != null)
             {
                 _unitOfWork.Lakes.Delete(lake);
                 await _unitOfWork.CompleteAsync();
             }
+            _logger.LogInformation(LogMessages.DeletedItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeleteLake)));
         }
 
         //Park
@@ -123,12 +126,15 @@ namespace Infrastructure.Services
 
         public async Task DeletePark(int parkId)
         {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeletePark)));
+
             var park = await _unitOfWork.Parks.GetParkById(parkId);
             if (park != null)
             {
                 _unitOfWork.Parks.Delete(park);
                 await _unitOfWork.CompleteAsync();
             }
+            _logger.LogInformation(LogMessages.DeletedItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeletePark)));
 
         }
 
@@ -164,12 +170,15 @@ namespace Infrastructure.Services
 
         public async Task DeleteFountain(int fountainId)
         {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeleteFountain)));
+
             var fountain = await _unitOfWork.Fountains.GetFountainById(fountainId);
             if (fountain != null)
             {
                 _unitOfWork.Fountains.Delete(fountain);
                 await _unitOfWork.CompleteAsync();
             }
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeleteFountain)));
         }
 
         //Landmark
@@ -186,7 +195,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateLandmarksModel> CreateLandmark(CreateLandmarksModel model)
         {
-            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateFountain)));
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateLandmark)));
 
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
             var landmarks = model.ToLandmark();
@@ -198,18 +207,21 @@ namespace Infrastructure.Services
             await _unitOfWork.Landmarks.Add(landmarks);
             await _unitOfWork.CompleteAsync();
 
-            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateFountain)));
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateLandmark)));
             return model;
         }
 
         public async Task DeleteLandmark(int landmarkId)
         {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeleteLandmark)));
+
             var landmark = await _unitOfWork.Landmarks.GetLandmarkById(landmarkId);
             if (landmark != null)
             {
                 _unitOfWork.Landmarks.Delete(landmark);
                 await _unitOfWork.CompleteAsync();
             }
+            _logger.LogInformation(LogMessages.DeletedItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeleteLandmark)));
         }
 
         //NatureReserve
@@ -250,12 +262,15 @@ namespace Infrastructure.Services
 
         public async Task DeleteNatureReserve(int reserveId)
         {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeleteNatureReserve)));
+
             var reserve = await _unitOfWork.NatureReserves.GetReserveById(reserveId);
             if (reserve != null)
             {
                 _unitOfWork.NatureReserves.Delete(reserve);
                 await _unitOfWork.CompleteAsync();
             }
+            _logger.LogInformation(LogMessages.DeletedItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeleteNatureReserve)));
         }
 
         //Villa
@@ -289,12 +304,15 @@ namespace Infrastructure.Services
 
         public async Task DeleteVilla(int villaId)
         {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeleteVilla)));
+
             var villa = await _unitOfWork.Villas.GetVillaById(villaId);
             if (villa != null)
             {
                 _unitOfWork.Villas.Delete(villa);
                 await _unitOfWork.CompleteAsync();
             }
+            _logger.LogInformation(LogMessages.DeletedItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeleteVilla)));
         }
     }
 }
