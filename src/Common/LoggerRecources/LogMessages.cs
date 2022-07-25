@@ -6,9 +6,11 @@
         public const int ListingItems = 1002;
         public const int GettingItem = 1003;
         public const int InsertingItem = 1004;
+        public const int DeletingItem = 1005;
 
         public const int ListedItem = 2002;
         public const int GotItem = 2003;
         public const int InsertedItem = 2004;
+        public const int DeletedItem = 2005;
     }
 }

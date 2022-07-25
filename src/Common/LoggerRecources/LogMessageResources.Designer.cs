@@ -72,6 +72,24 @@ namespace Common.LoggerRecources {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string DeletedItem {
+            get {
+                return ResourceManager.GetString("DeletedItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string DeletingItem {
+            get {
+                return ResourceManager.GetString("DeletingItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string GettingItem {
             get {
                 return ResourceManager.GetString("GettingItem", resourceCulture);

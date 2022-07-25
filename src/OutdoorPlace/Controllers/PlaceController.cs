@@ -33,8 +33,10 @@ namespace OutdoorPlace.Controllers
         }
 
         [HttpPost("outdoor")]
-        public async Task<IActionResult> CrateOutdoors([FromForm] CreateOutdoorsModel model)
+        public async Task<IActionResult> CreateOutdoors([FromForm] CreateOutdoorsModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateOutdoors)));
+
             await _placeService.CreateOutdoor(model);
 
             return Ok(model);
@@ -54,6 +56,8 @@ namespace OutdoorPlace.Controllers
         [HttpPost("lake")]
         public async Task<IActionResult> CreateLakes([FromForm] CreateLakesModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateLakes)));
+
             await _placeService.CreateLakes(model);
 
             return Ok(model);
@@ -62,6 +66,8 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("lake")]
         public async Task<IActionResult> DeleteLakes(int lakeId)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteLakes)));
+
             await _placeService.DeleteLake(lakeId);
 
             return NoContent();
@@ -81,6 +87,8 @@ namespace OutdoorPlace.Controllers
         [HttpPost("park")]
         public async Task<IActionResult> CreateParks([FromForm] CreateParksModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateParks)));
+
             await _placeService.CreatePark(model);
 
             return NoContent();
@@ -89,6 +97,7 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("park")]
         public async Task<IActionResult> DeleteParks(int parkId)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteParks)));
 
             await _placeService.DeletePark(parkId);
 
@@ -109,6 +118,8 @@ namespace OutdoorPlace.Controllers
         [HttpPost("fountain")]
         public async Task<IActionResult> CreateFountain([FromForm] CreateFountainsModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateFountain)));
+
             await _placeService.CreateFountain(model);
 
             return NoContent();
@@ -117,6 +128,8 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("fountain")]
         public async Task<IActionResult> DeleteFountain(int fountainId)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteFountain)));
+
             await _placeService.DeleteFountain(fountainId);
 
             return NoContent();
@@ -136,6 +149,8 @@ namespace OutdoorPlace.Controllers
         [HttpPost("landmark")]
         public async Task<IActionResult> CreateLandmark([FromForm] CreateLandmarksModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateLandmark)));
+
             await _placeService.CreateLandmark(model);
 
             return NoContent();
@@ -144,6 +159,8 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("landmark")]
         public async Task<IActionResult> DeleteLandmark(int landmarkId)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteLandmark)));
+
             await _placeService.DeleteLandmark(landmarkId);
 
             return NoContent();
@@ -163,6 +180,8 @@ namespace OutdoorPlace.Controllers
         [HttpPost("natureReserve")]
         public async Task<IActionResult> CreateNatureReserve([FromForm] CreateNatureReservesModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateNatureReserve)));
+
             await _placeService.CreateNatureReserve(model);
 
             return NoContent();
@@ -171,6 +190,8 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("natureReserve")]
         public async Task<IActionResult> DeleteNatureReserve(int natureReserveId)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteNatureReserve)));
+
             await _placeService.DeleteNatureReserve(natureReserveId);
 
             return NoContent();
@@ -190,6 +211,8 @@ namespace OutdoorPlace.Controllers
         [HttpPost("villa")]
         public async Task<IActionResult> CreateVilla([FromForm] CreateVillasModel model)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(CreateVilla)));
+
             await _placeService.CreateVilla(model);
 
             return NoContent();
@@ -198,6 +221,8 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("villa")]
         public async Task<IActionResult> DeleteVilla(int villaId)
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteVilla)));
+
             await _placeService.DeleteVilla(villaId);
 
             return NoContent();

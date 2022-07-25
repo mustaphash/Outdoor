@@ -120,6 +120,12 @@
   <data name="ControllerFound" xml:space="preserve">
     <value />
   </data>
+  <data name="DeletedItem" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeletingItem" xml:space="preserve">
+    <value />
+  </data>
   <data name="GettingItem" xml:space="preserve">
     <value />
   </data>
