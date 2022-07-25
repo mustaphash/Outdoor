@@ -1,4 +1,6 @@
-﻿using Infrastructure.Models;
+﻿using Common;
+using Common.LoggerRecources;
+using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Infrastructure.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,8 @@ namespace OutdoorPlace.Controllers
         [ProducesResponseType(typeof(IList<OutdoorModel>), 200)]
         public async Task<IActionResult> GetAllOutdoors()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllOutdoors)));
+
             var outdoors = await _placeService.GetAllOutdoors();
 
             return Ok(outdoors);
@@ -40,7 +44,8 @@ namespace OutdoorPlace.Controllers
         [HttpGet("lakes")]
         public async Task<IActionResult> GetAllLakes()
         {
-            _logger.LogInformation("Hi from Controller");
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllLakes)));
+
             var lakes = await _placeService.GetAllLakes();
 
             return Ok(lakes);
@@ -66,6 +71,8 @@ namespace OutdoorPlace.Controllers
         [HttpGet("parks")]
         public async Task<IActionResult> GetAllParks()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllParks)));
+
             var parks = await _placeService.GetAllPark();
 
             return Ok(parks);
@@ -82,7 +89,7 @@ namespace OutdoorPlace.Controllers
         [HttpDelete("park")]
         public async Task<IActionResult> DeleteParks(int parkId)
         {
-            
+
             await _placeService.DeletePark(parkId);
 
             return NoContent();
@@ -92,6 +99,8 @@ namespace OutdoorPlace.Controllers
         [HttpGet("fountains")]
         public async Task<IActionResult> GetAllFountains()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllFountains)));
+
             var fountains = await _placeService.GetAllFountain();
 
             return Ok(fountains);
@@ -117,6 +126,8 @@ namespace OutdoorPlace.Controllers
         [HttpGet("landmarks")]
         public async Task<IActionResult> GetAllLandmarks()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllLandmarks)));
+
             var landmarks = await _placeService.GetAllLandmarks();
 
             return Ok(landmarks);
@@ -142,6 +153,8 @@ namespace OutdoorPlace.Controllers
         [HttpGet("natureReserves")]
         public async Task<IActionResult> GetAllNatureReserves()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllNatureReserves)));
+
             var natureReserves = await _placeService.GetAllNatureReserves();
 
             return Ok(natureReserves);
@@ -167,6 +180,8 @@ namespace OutdoorPlace.Controllers
         [HttpGet("villas")]
         public async Task<IActionResult> GetAllVillas()
         {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(GetAllVillas)));
+
             var villas = await _placeService.GetAllVilla();
 
             return Ok(villas);
