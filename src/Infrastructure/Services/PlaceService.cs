@@ -1,4 +1,6 @@
-﻿using Core.Entities;
+﻿using Common;
+using Common.LoggerRecources;
+using Core.Entities;
 using DAL;
 using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
@@ -20,28 +22,35 @@ namespace Infrastructure.Services
         //Outdoor
         public async Task<CreateOutdoorsModel> CreateOutdoor(CreateOutdoorsModel model)
         {
+            _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateOutdoor)));
+
             var outdoors = model.ToOutdoor();
             await _unitOfWork.Outdoors.Add(outdoors);
             await _unitOfWork.CompleteAsync();
 
+            _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateOutdoor)));
             return model;
         }
 
         public async Task<IList<OutdoorModel>> GetAllOutdoors()
         {
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllOutdoors)));
+
             var outdoors = await _unitOfWork.Outdoors.GetAll();
             var outdoorsModel = outdoors.Select(o => new OutdoorModel(o)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllOutdoors)));
             return outdoorsModel;
         }
 
         //Lake
         public async Task<IList<LakeModel>> GetAllLakes()
         {
-            _logger.LogInformation(string.Format("Hi from GetAllLakes, PlaceService!"));
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllLakes)));
             var lakes = await _unitOfWork.Lakes.GetAllLakes();
             var lakesModel = lakes.Select(l => new LakeModel(l)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllLakes)));
             return lakesModel;
         }
 
@@ -79,9 +88,11 @@ namespace Infrastructure.Services
         //Park
         public async Task<IList<ParkModel>> GetAllPark()
         {
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllPark)));
             var parks = await _unitOfWork.Parks.GetAllParks();
             var parksModel = parks.Select(p => new ParkModel(p)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllPark)));
             return parksModel;
         }
         public async Task<CreateParksModel> CreatePark(CreateParksModel model)
@@ -119,9 +130,11 @@ namespace Infrastructure.Services
         //Fountain
         public async Task<IList<FountainModel>> GetAllFountain()
         {
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllFountain)));
             var fountains = await _unitOfWork.Fountains.GetAllFountains();
             var fountainModel = fountains.Select(f => new FountainModel(f)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllFountain)));
             return fountainModel;
         }
 
@@ -153,9 +166,11 @@ namespace Infrastructure.Services
         //Landmark
         public async Task<IList<LandmarkModel>> GetAllLandmarks()
         {
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllLandmarks)));
             var landmarks = await _unitOfWork.Landmarks.GetAllLandmarks();
             var landmarkModel = landmarks.Select(l => new LandmarkModel(l)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllLandmarks)));
             return landmarkModel;
         }
 
@@ -187,9 +202,11 @@ namespace Infrastructure.Services
         //NatureReserve
         public async Task<IList<NatureReserveModel>> GetAllNatureReserves()
         {
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllNatureReserves)));
             var natureReserves = await _unitOfWork.NatureReserves.GetAllReserves();
             var natureReserveModel = natureReserves.Select(n => new NatureReserveModel(n)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllNatureReserves)));
             return natureReserveModel;
         }
 
@@ -227,9 +244,11 @@ namespace Infrastructure.Services
         //Villa
         public async Task<IList<VillaModel>> GetAllVilla()
         {
+            _logger.LogInformation(LogMessages.GettingItem, string.Format(LogMessageResources.GettingItem, nameof(PlaceService), nameof(GetAllVilla)));
             var villas = await _unitOfWork.Villas.GetAll();
             var villaModel = villas.Select(v => new VillaModel(v)).ToList();
 
+            _logger.LogInformation(LogMessages.GotItem, string.Format(LogMessageResources.GotItem, nameof(PlaceService), nameof(GetAllVilla)));
             return villaModel;
         }
 
