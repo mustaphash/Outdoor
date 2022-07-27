@@ -79,7 +79,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Item with id {0} from {1}, {2} is deleting....
         /// </summary>
         public static string DeletingItem {
             get {
@@ -88,7 +88,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to {0}, {1} Getting items....
         /// </summary>
         public static string GettingItem {
             get {
@@ -97,7 +97,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Got items from {0}, {1}!.
         /// </summary>
         public static string GotItem {
             get {
@@ -106,7 +106,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to {0}, {1} Properties was inserted!.
         /// </summary>
         public static string InsertedItem {
             get {
@@ -115,7 +115,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to {0}, {1} Inserting properties....
         /// </summary>
         public static string InsertingItem {
             get {
@@ -124,7 +124,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Items from {0}, {1} listed!.
         /// </summary>
         public static string ListedItems {
             get {
@@ -133,7 +133,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to {0}, {1} Listing items....
         /// </summary>
         public static string ListingItems {
             get {
