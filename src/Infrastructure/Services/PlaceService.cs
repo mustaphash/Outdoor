@@ -43,6 +43,19 @@ namespace Infrastructure.Services
             return outdoorsModel;
         }
 
+        public async Task DeleteOutdoor(int outId)
+        {
+            _logger.LogInformation(LogMessages.DeletingItem, string.Format(LogMessageResources.DeletingItem, nameof(PlaceService), nameof(DeleteOutdoor)));
+
+            var outdoor = await _unitOfWork.Outdoors.GetOutdoorById(outId);
+            if (outdoor != null)
+            {
+                _unitOfWork.Outdoors.Delete(outdoor);
+                await _unitOfWork.CompleteAsync();
+            }
+            _logger.LogInformation(LogMessages.DeletedItem, string.Format(LogMessageResources.DeletedItem, nameof(PlaceService), nameof(DeleteOutdoor)));
+        }
+
         //Lake
         public async Task<IList<LakeModel>> GetAllLakes()
         {
@@ -297,7 +310,7 @@ namespace Infrastructure.Services
             }
             await _unitOfWork.Villas.Add(villas);
             await _unitOfWork.CompleteAsync();
-            
+
             _logger.LogInformation(LogMessages.InsertedItem, string.Format(LogMessageResources.InsertedItem, nameof(PlaceService), nameof(CreateVilla)));
             return model;
         }
