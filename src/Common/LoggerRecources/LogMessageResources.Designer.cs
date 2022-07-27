@@ -70,7 +70,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Item with id {0} from {1}, {2} was deleted!.
         /// </summary>
         public static string DeletedItem {
             get {

@@ -121,7 +121,7 @@
     <value>Controller with name {0} and endpoint {1} is found!</value>
   </data>
   <data name="DeletedItem" xml:space="preserve">
-    <value />
+    <value>Item with id {0} from {1}, {2} was deleted!</value>
   </data>
   <data name="DeletingItem" xml:space="preserve">
     <value />
