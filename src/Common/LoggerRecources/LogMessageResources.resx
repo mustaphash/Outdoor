@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ControllerFound" xml:space="preserve">
-    <value />
+    <value>Controller with name {0} and endpoint {1} is found!</value>
   </data>
   <data name="DeletedItem" xml:space="preserve">
     <value />

@@ -61,7 +61,7 @@ namespace Common.LoggerRecources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Controller with name {0} and endpoint {1} is found!.
         /// </summary>
         public static string ControllerFound {
             get {

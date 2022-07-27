@@ -42,6 +42,16 @@ namespace OutdoorPlace.Controllers
             return Ok(model);
         }
 
+        [HttpDelete("outdoor")]
+        public async Task<IActionResult> DeleteOutdoor(int outId)
+        {
+            _logger.LogInformation(LogMessages.ControllerFound, string.Format(LogMessageResources.ControllerFound, nameof(PlaceController), nameof(DeleteOutdoor)));
+
+            await _placeService.DeleteOutdoor(outId);
+
+            return NoContent();
+        }
+
         //Lake
         [HttpGet("lakes")]
         public async Task<IActionResult> GetAllLakes()

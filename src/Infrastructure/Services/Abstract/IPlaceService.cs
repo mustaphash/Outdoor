@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-using Infrastructure.Models;
+﻿using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 
 namespace Infrastructure.Services.Abstract
@@ -9,6 +8,8 @@ namespace Infrastructure.Services.Abstract
         Task<IList<OutdoorModel>> GetAllOutdoors();
 
         Task<CreateOutdoorsModel> CreateOutdoor(CreateOutdoorsModel model);
+
+        Task DeleteOutdoor(int outId);
 
         Task<IList<LakeModel>> GetAllLakes();
 

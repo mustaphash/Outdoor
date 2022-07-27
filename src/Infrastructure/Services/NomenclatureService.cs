@@ -12,7 +12,7 @@ namespace Infrastructure.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
 
-        public NomenclatureService(IUnitOfWork unitOfWork, ILogger logger)
+        public NomenclatureService(IUnitOfWork unitOfWork, ILogger<NomenclatureService> logger)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;

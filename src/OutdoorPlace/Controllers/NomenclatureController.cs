@@ -13,7 +13,7 @@ namespace OutdoorPlace.Controllers
         private readonly INomenclatureService _nomenclatureService;
         private readonly ILogger _logger;
 
-        public NomenclatureController(INomenclatureService nomenclatureService, ILogger logger)
+        public NomenclatureController(INomenclatureService nomenclatureService, ILogger<NomenclatureController> logger)
         {
             _nomenclatureService = nomenclatureService;
             _logger = logger;

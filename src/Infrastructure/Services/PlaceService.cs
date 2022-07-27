@@ -69,6 +69,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
+            //TODO: validation!
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateLakes)));
 
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
