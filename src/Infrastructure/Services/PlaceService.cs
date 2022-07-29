@@ -14,12 +14,18 @@ namespace Infrastructure.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
-        private readonly IValidation<CreateFountainsModel> _validationFountain;
-        public PlaceService(IUnitOfWork unitOfWork, ILogger<PlaceService> logger, IValidation<CreateFountainsModel> validationFountain)
+        private readonly IValidation<CreateFountainsModel> _fountainsValidator;
+        private readonly IValidation<CreateLakesModel> _lakesValidator;
+        public PlaceService(
+            IUnitOfWork unitOfWork, 
+            ILogger<PlaceService> logger, 
+            IValidation<CreateFountainsModel> fountainsValidator,
+            IValidation<CreateLakesModel> lakesValidator)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
-            _validationFountain = validationFountain;
+            _fountainsValidator = fountainsValidator;
+            _lakesValidator = lakesValidator;
         }
 
         //Outdoor
@@ -73,6 +79,7 @@ namespace Infrastructure.Services
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
             //TODO: validation!
+            await _validationLakes.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateLakes)));
 
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
@@ -169,7 +176,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
-            await _validationFountain.Validate(model);
+            await _validationFountains.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateFountain)));
 
             var fountains = model.ToFountain();

@@ -24,6 +24,7 @@ namespace Infrastructure.Validations
 
             _logger.LogInformation(LogMessages.ValidatingItem, string.Format(LogMessageResources.ValidatingItem, nameof(model.WaterTypeId)));
             WaterType waterType = await _unitOfWork.WaterTypes.GetWaterTypeById(model.WaterTypeId);
+
             if (waterType == null)
             {
                 string message = $"{nameof(WaterType)} with id {model.WaterTypeId} is not found!";
