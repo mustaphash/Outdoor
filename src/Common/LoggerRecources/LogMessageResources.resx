@@ -144,4 +144,13 @@
   <data name="ListingItems" xml:space="preserve">
     <value>{0}, {1} Listing items...</value>
   </data>
+  <data name="ValidatedItem" xml:space="preserve">
+    <value>Validated {0}</value>
+  </data>
+  <data name="ValidatingItem" xml:space="preserve">
+    <value>Validating {0}</value>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>Validation of [{0}] failed with message: [{1}]</value>
+  </data>
 </root>

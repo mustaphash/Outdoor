@@ -140,5 +140,32 @@ namespace Common.LoggerRecources {
                 return ResourceManager.GetString("ListingItems", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validated {0}.
+        /// </summary>
+        public static string ValidatedItem {
+            get {
+                return ResourceManager.GetString("ValidatedItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validating {0}.
+        /// </summary>
+        public static string ValidatingItem {
+            get {
+                return ResourceManager.GetString("ValidatingItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validation of [{0}] failed with message: [{1}].
+        /// </summary>
+        public static string ValidationFailed {
+            get {
+                return ResourceManager.GetString("ValidationFailed", resourceCulture);
+            }
+        }
     }
 }

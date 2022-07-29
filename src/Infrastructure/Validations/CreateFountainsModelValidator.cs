@@ -1,7 +1,8 @@
-﻿using Core.Entities;
+﻿using Common;
+using Common.LoggerRecources;
+using Core.Entities;
 using Core.Validation;
 using DAL;
-using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
 using Microsoft.Extensions.Logging;
 
@@ -21,16 +22,24 @@ namespace Infrastructure.Validations
         {
             List<string> errors = new List<string>();
 
+            _logger.LogInformation(LogMessages.ValidatingItem, string.Format(LogMessageResources.ValidatingItem, nameof(model.WaterTypeId)));
             WaterType waterType = await _unitOfWork.WaterTypes.GetWaterTypeById(model.WaterTypeId);
             if (waterType == null)
             {
-                errors.Add($"{nameof(WaterType)} with id {model.WaterTypeId} is not found!");
-                
+                string message = $"{nameof(WaterType)} with id {model.WaterTypeId} is not found!";
+                _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.WaterTypeId), message));
+                errors.Add(message);
             }
+            _logger.LogInformation(LogMessages.ValidatedItem, string.Format(LogMessageResources.ValidatedItem, nameof(model.WaterTypeId)));
+
+            _logger.LogInformation(LogMessages.ValidatingItem, string.Format(LogMessageResources.ValidatingItem, nameof(model.Name)));
             if (string.IsNullOrEmpty(model.Name))
             {
-                errors.Add("Name cannot be empty!");
+                string message = "Name cannot be empty!";
+                _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
+                errors.Add(message);
             }
+            _logger.LogInformation(LogMessages.ValidatedItem, string.Format(LogMessageResources.ValidatedItem, nameof(model.Name)));
         }
     }
 }

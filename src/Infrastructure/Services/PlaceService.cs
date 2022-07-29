@@ -1,6 +1,7 @@
 ﻿using Common;
 using Common.LoggerRecources;
 using Core.Entities;
+using Core.Validation;
 using DAL;
 using Infrastructure.Models;
 using Infrastructure.Models.CreateModels;
@@ -13,10 +14,12 @@ namespace Infrastructure.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
-        public PlaceService(IUnitOfWork unitOfWork, ILogger<PlaceService> logger)
+        private readonly IValidation<CreateFountainsModel> _validationFountain;
+        public PlaceService(IUnitOfWork unitOfWork, ILogger<PlaceService> logger, IValidation<CreateFountainsModel> validationFountain)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _validationFountain = validationFountain;
         }
 
         //Outdoor
@@ -166,6 +169,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
+            await _validationFountain.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateFountain)));
 
             var fountains = model.ToFountain();
