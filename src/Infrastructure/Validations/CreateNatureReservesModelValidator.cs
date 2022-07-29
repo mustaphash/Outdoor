@@ -8,20 +8,18 @@ using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Validations
 {
-    public class CreateLakesModelValidator : IValidation<CreateLakesModel>
+    public class CreateNatureReservesModelValidator : IValidation<CreateNatureReservesModel>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
-
-        public CreateLakesModelValidator(
-            IUnitOfWork unitOfWork,
-            ILogger<CreateLakesModelValidator> logger)
+        public CreateNatureReservesModelValidator(IUnitOfWork unitOfWork, ILogger<CreateNatureReservesModelValidator> logger)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
         }
-        public async Task Validate(CreateLakesModel model)
+        public async Task Validate(CreateNatureReservesModel model)
         {
+
             List<string> errors = new List<string>();
 
             _logger.LogInformation(LogMessages.ValidatingItem, string.Format(LogMessageResources.ValidatingItem, nameof(model.Animals)));

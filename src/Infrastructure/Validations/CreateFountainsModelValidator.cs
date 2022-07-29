@@ -10,7 +10,7 @@ namespace Infrastructure.Validations
 {
     public class CreateFountainsModelValidator : IValidation<CreateFountainsModel>
     {
-        private readonly ILogger<CreateFountainsModelValidator> _logger;
+        private readonly ILogger _logger;
         private readonly IUnitOfWork _unitOfWork;
 
         public CreateFountainsModelValidator(ILogger<CreateFountainsModelValidator> logger, IUnitOfWork unitOfWork)

@@ -8,19 +8,16 @@ using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Validations
 {
-    public class CreateLakesModelValidator : IValidation<CreateLakesModel>
+    public class CreateParksModelValidator : IValidation<CreateParksModel>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
-
-        public CreateLakesModelValidator(
-            IUnitOfWork unitOfWork,
-            ILogger<CreateLakesModelValidator> logger)
+        public CreateParksModelValidator(IUnitOfWork unitOfWork, ILogger<CreateParksModelValidator> logger)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
         }
-        public async Task Validate(CreateLakesModel model)
+        public async Task Validate(CreateParksModel model)
         {
             List<string> errors = new List<string>();
 

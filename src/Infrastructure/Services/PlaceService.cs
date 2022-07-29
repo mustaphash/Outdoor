@@ -79,7 +79,7 @@ namespace Infrastructure.Services
         public async Task<CreateLakesModel> CreateLakes(CreateLakesModel model)
         {
             //TODO: validation!
-            await _validationLakes.Validate(model);
+            await _lakesValidator.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateLakes)));
 
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
@@ -176,7 +176,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateFountainsModel> CreateFountain(CreateFountainsModel model)
         {
-            await _validationFountains.Validate(model);
+            await _fountainsValidator.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateFountain)));
 
             var fountains = model.ToFountain();
