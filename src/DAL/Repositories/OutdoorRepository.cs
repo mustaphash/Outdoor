@@ -12,11 +12,13 @@ namespace DAL.Repositories
             _context = context;
         }
 
+#pragma warning disable CS8603
         public async Task<Outdoor> GetOutdoorById(int id)
         {
             var outdoor = await _context.Outdoors.FirstOrDefaultAsync(o => o.Id == id);
-
+ 
             return outdoor;
         }
+#pragma warning restore CS8603
     }
 }
