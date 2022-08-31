@@ -16,16 +16,29 @@ namespace Infrastructure.Services
         private readonly ILogger _logger;
         private readonly IValidation<CreateFountainsModel> _fountainsValidator;
         private readonly IValidation<CreateLakesModel> _lakesValidator;
+        private readonly IValidation<CreateLandmarksModel> _landmarksValidator;
+        private readonly IValidation<CreateNatureReservesModel> _natureReservesValidator;
+        private readonly IValidation<CreateParksModel> _parksValidator;
+        private readonly IValidation<CreateVillasModel> _villasValidator;
         public PlaceService(
-            IUnitOfWork unitOfWork, 
-            ILogger<PlaceService> logger, 
+            IUnitOfWork unitOfWork,
+            ILogger<PlaceService> logger,
             IValidation<CreateFountainsModel> fountainsValidator,
-            IValidation<CreateLakesModel> lakesValidator)
+            IValidation<CreateLakesModel> lakesValidator,
+            IValidation<CreateLandmarksModel> landmarksValidator,
+            IValidation<CreateNatureReservesModel> natureReservesValidator,
+            IValidation<CreateParksModel> parksValidator,
+            IValidation<CreateVillasModel> villasValidator)
+
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _fountainsValidator = fountainsValidator;
             _lakesValidator = lakesValidator;
+            _landmarksValidator = landmarksValidator;
+            _natureReservesValidator = natureReservesValidator;
+            _parksValidator = parksValidator;
+            _villasValidator = villasValidator;
         }
 
         //Outdoor
@@ -127,6 +140,7 @@ namespace Infrastructure.Services
         }
         public async Task<CreateParksModel> CreatePark(CreateParksModel model)
         {
+            await _parksValidator.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreatePark)));
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
@@ -220,6 +234,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateLandmarksModel> CreateLandmark(CreateLandmarksModel model)
         {
+            await _landmarksValidator.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateLandmark)));
 
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
@@ -263,6 +278,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateNatureReservesModel> CreateNatureReserve(CreateNatureReservesModel model)
         {
+            await _natureReservesValidator.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateNatureReserve)));
 
             var animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
@@ -311,6 +327,7 @@ namespace Infrastructure.Services
 
         public async Task<CreateVillasModel> CreateVilla(CreateVillasModel model)
         {
+            await _villasValidator.Validate(model);
             _logger.LogInformation(LogMessages.InsertingItem, string.Format(LogMessageResources.InsertingItem, nameof(PlaceService), nameof(CreateVilla)));
 
             var extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
