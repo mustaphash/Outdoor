@@ -7,6 +7,7 @@ using Infrastructure.Services;
 using Infrastructure.Services.Abstract;
 using Infrastructure.Validations;
 using Microsoft.EntityFrameworkCore;
+using OutdoorPlace.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureLogging(loggin =>
@@ -14,9 +15,13 @@ builder.Host.ConfigureLogging(loggin =>
     loggin.ClearProviders();
     loggin.AddConsole();
 });
+
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new GlobalExceptionHandlingFilter());
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
