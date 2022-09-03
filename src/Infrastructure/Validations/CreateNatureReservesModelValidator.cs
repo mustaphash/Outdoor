@@ -48,26 +48,20 @@ namespace Infrastructure.Validations
             }
 
             _logger.LogInformation(LogMessages.ValidatingItem, string.Format(LogMessageResources.ValidatingItem, nameof(model.Name)));
-            if (string.IsNullOrEmpty(model.Name))
-            {
-                string message = "Name cannot be empty!";
-                _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
-                errors.Add(message);
-            }
-#pragma warning disable CS8602
-            if (model.Name == null && model.Name.Length > 200)
+#pragma warning disable CS8602 
+            if (string.IsNullOrEmpty(model.Name) || model.Name.Length > 200)
             {
                 string message = "Name cannot be empty or long than 200 charracters!";
                 _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
                 errors.Add(message);
             }
-            if (model.Description == null && model.Description.Length > 1000)
+            if (string.IsNullOrEmpty(model.Description) || model.Description.Length > 1000)
             {
                 string message = "Description cannot be null or long than 1000 charracters!";
                 _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
                 errors.Add(message);
             }
-#pragma warning restore CS8602 
+#pragma warning disable CS8602
             if (model.Longitude <= 0)
             {
                 string message = "Longitude cannot be negative or zero!";
