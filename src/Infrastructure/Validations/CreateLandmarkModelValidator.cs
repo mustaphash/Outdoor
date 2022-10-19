@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Exceptions;
 using Common.LoggerRecources;
 using Core.Entities;
 using Core.Validation;
@@ -62,7 +63,13 @@ namespace Infrastructure.Validations
                 _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
                 errors.Add(message);
             }
-            _logger.LogInformation(LogMessages.ValidatedItem, string.Format(LogMessageResources.ValidatedItem, nameof(model.Name)));
+
+            if (errors.Any())
+            {
+                string message = string.Join(Environment.NewLine, errors);
+                _logger.LogWarning(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(CreateLandmarksModel), message));
+                throw new BadRequestException(message);
+            }
 
         }
     }
