@@ -28,19 +28,11 @@ namespace Infrastructure.Validations
             if (model.Animals != null && model.Animals.Any())
             {
                 List<Animal> animals = await _unitOfWork.Animals.GetAnimalsByIds(model.Animals);
-                if (animals != null && animals.Any())
+                if (animals.Count != model.Animals.Count)
                 {
-
-                    foreach (var animal in animals)
-                    {
-                        // if (animal == null)
-                        // {
-                        //     string message = $"{nameof(Animal)}, {animal} is not found!";
-                        //     _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Animals), message));
-                        //     errors.Add(message);
-                        // }
-                        // _logger.LogInformation(LogMessages.ValidatedItem, string.Format(LogMessageResources.ValidatedItem, nameof(model.Animals)));
-                    }
+                    string message = $"{nameof(Animal)}, not all animals are present in the system!";
+                    _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Animals), message));
+                    errors.Add(message);
                 }
             }
 
@@ -48,41 +40,36 @@ namespace Infrastructure.Validations
             if (model.Extras != null && model.Extras.Any())
             {
                 List<Extras> extras = await _unitOfWork.Extras.GetExtrasByIds(model.Extras);
-                if (extras != null && extras.Any())
+                if (extras.Count != model.Extras.Count)
                 {
-                    foreach (var extra in extras)
-                    {
-                       // if (extra == null)
-                       // {
-                       //     string message = $"{nameof(Extras)}, {extra} is not found!";
-                       //     _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Extras), message));
-                       //     errors.Add(message);
-                       // }
-                    }
+                    string message = $"{nameof(Extras)}, not all extras are present in the system!";
+                    _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Extras), message));
+                    errors.Add(message);
                 }
             }
             _logger.LogInformation(LogMessages.ValidatingItem, string.Format(LogMessageResources.ValidatingItem, nameof(model.Name)));
-#pragma warning disable CS8602 
+
             if (string.IsNullOrEmpty(model.Name) || model.Name.Length > 200)
             {
                 string message = "Name cannot be empty or long than 200 charracters!";
                 _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
                 errors.Add(message);
-            }
-#pragma warning disable CS8604 
+            } 
+
             if (string.IsNullOrEmpty(model.Description) || model.Description.Length > 1000)
             {
-                string message = "Description cannot be null or long than 1000 charracters!";
+                string message = "Description cannot be null or longer than 1000 charracters!";
                 _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
                 errors.Add(message);
             }
-#pragma warning restore CS8604 
+
             if (model.Longitude <= 0)
             {
                 string message = "Longitude cannot be negative or zero!";
                 _logger.LogInformation(LogMessages.ValidationFailed, string.Format(LogMessageResources.ValidationFailed, nameof(model.Name), message));
                 errors.Add(message);
             }
+
             if (model.Latitude <= 0)
             {
                 string message = "Latitude cannot be negative or zero!";
